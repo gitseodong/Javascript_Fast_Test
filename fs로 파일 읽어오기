@@ -1,5 +1,5 @@
 let fs = require('fs');
 
-let input = fs.readFileSync('point.txt').toString().split('\n');
+let input = fs.readFileSync('point.txt').toString().split('\n'); //point.txt 파일을 읽어옴
 
 console.log(input);
