@@ -1,0 +1,9 @@
+const a = 777;
+const b = a.toString(); //문자열로 변환
+const c = String(a);    //문자열로 변환
+
+console.log(b);
+console.log(c);
+
+console.log(Number(c)); //숫자로 변환
+console.log('나이스');
