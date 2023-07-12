@@ -1,0 +1,14 @@
+const rl = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+let input = [];
+rl.on('line', (line) => {
+  input.push(line);
+}).on('close', () => {
+  console.log(input);
+  process.exit();
+});
+
+// 실행 후 console창에 여러 줄을 입력하면 입력한 내용이 배열로 저장된다.
