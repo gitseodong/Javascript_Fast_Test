@@ -6,8 +6,8 @@ for (let i = 1; i <= n; i++) {
   for (let j = 1; j <= distance; j++) {
     str += ' ';
   }
- for (let j = 1; j <= n - distance * 2; j++) {
-   str += '*';
-} 
+  for (let j = 1; j <= n - distance * 2; j++) {
+    str += '*';
+  } 
   console.log(str);
 }
