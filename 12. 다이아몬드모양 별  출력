@@ -1,0 +1,13 @@
+let n = 27; //n은 홀수만 입력 가능.
+
+for (let i = 1; i <= n; i++) {
+  let str = '';
+  let distance = Math.abs((n+1)/2 - i)
+  for (let j = 1; j <= distance; j++) {
+    str += ' ';
+  }
+ for (let j = 1; j <= n - distance * 2; j++) {
+   str += '*';
+} 
+  console.log(str);
+}
