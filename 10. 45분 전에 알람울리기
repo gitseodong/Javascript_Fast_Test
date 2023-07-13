@@ -1,0 +1,18 @@
+// 설정한 시간보다 45분 전에 알람 울리게 하기 (날짜 개념은 없다고 가정, 24시간)
+
+let fs = require('fs');
+let input = fs.readFileSync('/dev/stdin').toString().split(' ');
+let d1 = Number(input[0]);
+let d2 = Number(input[1]);
+
+d2 -= 45;
+
+if ( d2 < 0 ) {
+    d2 += 60;
+    d1 -= 1;
+}
+if (d1 < 0 ) {
+    d1 += 24;
+}
+
+console.log(d1, d2);
