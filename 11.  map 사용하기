@@ -1,0 +1,9 @@
+//20시 50분 부터 105분 후를 출력하는 코드
+
+const input = "20 50\n105".split('\n');
+const [si, bun] = input[0].split(' ').map(Number);
+const time = Number(input[1]);
+
+const total = si * 60 + bun + time;
+console.log((parseInt(total/60))%24, parseInt(total%60));
+
