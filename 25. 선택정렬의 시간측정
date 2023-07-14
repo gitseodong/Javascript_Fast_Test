@@ -1,0 +1,25 @@
+let arr = Array.from({length: 30000}, () => Math.floor(Math.random()*1000));
+// let arr = Array.from({length: 30000}, () => 7);
+// 정렬되지 않은 배열을 선택정렬하는 것과 정렬된 배열을 선택정렬하는 것은 같은 시간이 걸린다.
+
+//getTime(): 1970-01-01부터의 시간차를 ms 단위로 계산
+console.log('정렬 전 : ', arr);
+let startTime = new Date().getTime();
+selectionSort(arr);
+let endTime = new Date().getTime();
+console.log('걸린 시간:', endTime - startTime, 'ms');
+console.log('정렬 후 :', arr);
+
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let index = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[index]) {
+        index = j;
+      }
+    }
+    const temp = arr[i];
+    arr[i] = arr[index];
+    arr[index] = temp;
+  }
+}
