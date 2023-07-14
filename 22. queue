@@ -36,6 +36,11 @@ queue.enqueue(5);
 queue.dequeue();
 queue.dequeue();
 
+console.log('음흠');
+for (let i = queue.headIndex; i < queue.tailIndex; i++) {
+  console.log(queue.items[i]);
+}
+
 console.log('큐~~');
 while (queue.getLength() !== 0) {
   console.log(queue.dequeue());
