@@ -1,0 +1,19 @@
+const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+
+console.log(animals.slice(2)); // 2포함 끝까지
+// Expected output: Array ["camel", "duck", "elephant"]
+
+console.log(animals.slice(2, 4)); // 2포함 4제외 3까지
+// Expected output: Array ["camel", "duck"]
+
+console.log(animals.slice(1, 5)); // 1포함 5제외 4까지
+// Expected output: Array ["bison", "camel", "duck", "elephant"]
+
+console.log(animals.slice(-2));  // -2포함 끝까지
+// Expected output: Array ["duck", "elephant"]
+
+console.log(animals.slice(2, -1)); // 2포함 -1제외 -2까지
+// Expected output: Array ["camel", "duck"]
+
+console.log(animals.slice()); // 전체 포함
+// Expected output: Array ["ant", "bison", "camel", "duck", "elephant"]
