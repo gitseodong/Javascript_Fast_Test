@@ -1,0 +1,88 @@
+// 하단부에 있는 분:초 데이터를 모두 더하여 총 시간, 분, 초를 나타내는 코드
+
+let fs = require('fs');
+let input = fs.readFileSync('node.txt').toString().split('\n');
+
+let sum_bun = 0;
+let sum_cho = 0;
+let sum_si = 0;
+for (let i = 0; i < input.length; i++) {
+  let [bun, cho] = input[i].split(':');
+  sum_bun += Number(bun);
+  sum_cho += Number(cho.slice(0, 2));
+}
+
+console.log(sum_bun, sum_cho); // output: 384 1698
+
+sum_bun += parseInt(sum_cho / 60);
+sum_cho = sum_cho % 60;
+sum_si += parseInt(sum_bun / 60);
+sum_bun = sum_bun % 60;
+
+console.log(sum_si, sum_bun, sum_cho); // output:  6 52 18
+
+
+
+//아래는 분:초 데이터
+9:09
+2:02
+3:22
+2:48
+3:07
+11:16
+2:10
+6:32
+9:57
+8:16
+4:$2
+2:31
+6:36
+15:31
+8:46
+7:00
+11:18
+15:34
+12:38
+7:47
+6:05
+2:40
+14:48
+4:46
+5:36
+4:31
+6:20
+7:25
+2:09
+3:29
+2:47
+7:25
+4:29
+3:53
+7:06
+2:25
+8:47
+4:04
+4:45
+6:29
+10:57
+5:04
+8:41
+2:51
+5:22
+7:49
+7:14
+4:51
+3:02
+2:01
+2:56
+9:04
+10:25
+7:26
+14:19
+9:36
+7:24
+3:07
+9:14
+6:05
+7:32
+6:17
