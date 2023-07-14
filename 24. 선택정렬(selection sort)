@@ -1,0 +1,14 @@
+let arr = [100, 94, 940, 92, 39, 1, 4, 91, 92, 102, 939, 842, 65];
+
+for (let i = 0; i < arr.length; i++) {
+  let index = i;
+  for (let j = i + 1; j < arr.length; j++) {
+    if (arr[j] < arr[index]) {
+      index = j;
+    }
+  }
+  const temp = arr[i];
+  arr[i] = arr[index];
+  arr[index] = temp;
+}
+console.log(arr);
