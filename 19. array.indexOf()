@@ -1,0 +1,11 @@
+const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+
+console.log(beasts.indexOf('bison'));  // 첫 번째 'bison'의 index를 반환
+// Expected output: 1
+
+// Start from index 2
+console.log(beasts.indexOf('bison', 2)); // 두 번째 'bisn'의 index를 반환
+// Expected output: 4
+
+console.log(beasts.indexOf('giraffe')); // 없는 경우 -1을 반환
+// Expected output: -1
