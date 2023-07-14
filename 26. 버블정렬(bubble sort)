@@ -7,8 +7,8 @@ console.log(arr);
 
 function bubbleSort(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
-    for (let j = 0; j < arr.length - 1 - i; j++) {
-      if (arr[j] > arr[j+1]) {
+    for (let j = 0; j < arr.length - 1 - i; j++) { // index 0부터 length - 1까지 1회돌면 가장 큰 수가 가장 끝에 존재하게 된다.
+      if (arr[j] > arr[j+1]) {                     // 따라서 두 번째는 length - 2까지 돌면 되고, 순차적으로 1회씩 횟수가 줄어든다.
         const temp = arr[j];
         arr[j] = arr[j+1];
         arr[j+1] = temp;
