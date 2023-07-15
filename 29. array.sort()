@@ -13,3 +13,29 @@ function compare2(a, b) { // 내림차순 : return b-a; 를 하면 된다.
   else if (a < b) return 1;
   else return 0;
 }
+
+==============================
+
+let arr = [{ name: '조성창', age: 41},
+           { name: '오은정', age: 41},
+           { name: '조환희', age: 12},
+           { name: '조아라', age: 10}];
+
+arr.sort(compare_name);
+console.log(arr);
+arr.sort(compare_age);
+console.log(arr);
+
+function compare_name(a, b) { // name을 오름차순으로 정렬
+  if (a.name < b.name) return -1;
+  else if (a.name > b.name) return 1;
+  else return 0;
+}
+
+function compare_age(a, b) { // age를 내림차순으로 정렬
+  if (a.age > b.age) return -1;
+  else if (a.age < b.age) return 1;
+  else return 0;
+}
+
+
