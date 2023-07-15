@@ -1,0 +1,42 @@
+function merge(arr, left, mid, right) {
+  let i1 = left;
+  let i2 = mid+1;
+  let arr_temp = [];
+  while (i1 <= mid && i2 <= right) {
+    if (arr[i1] < arr[i2]) {
+      arr_temp.push(arr[i1]);
+      i1++;
+    } else {
+      arr_temp.push(arr[i2]);
+      i2++;
+    }
+  }
+  while (i1 <= mid) {
+    arr_temp.push(arr[i1]);
+    i1++;
+  }
+  while (i2 <= right) {
+    arr_temp.push(arr[i2]);
+    i2++;
+  }
+  arr.splice(left, arr_temp.length, ...arr_temp);
+}
+
+
+function mergeSort(arr, left, right) {
+  if (left < right) {
+    let mid = parseInt((left + right) / 2);
+    mergeSort(arr, left, mid);
+    mergeSort(arr, mid + 1, right);
+    merge(arr, left, mid, right);
+  }
+}
+
+let arr = Array.from({length: 100000}, () => Math.floor(Math.random() * 1000));
+console.log(arr);
+
+let startTime = new Date().getTime();
+mergeSort(arr, 0, arr.length-1);
+let endTime = new Date().getTime();
+console.log('걸린시간:', endTime-startTime, 'ms');
+console.log(arr);
