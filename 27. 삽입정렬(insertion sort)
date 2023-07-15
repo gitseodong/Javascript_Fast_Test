@@ -4,6 +4,7 @@ let arr = Array.from({length: 30000}, () => Math.floor(Math.random()*1000));
 console.log(arr);
 let startTime = new Date().getTime();
 
+// 삽입정렬: 첫 번째 칸은 정렬되어 있다고 가정함. 그 후 두 번째 칸부터 바로왼쪽과 비교하여 작으면 왼쪽의 적절한 위치로 보냄. 
 function insertionSort(arr) {
   for (let i = 1; i < arr.length; i++) {
     for (let j = i; j >= 1; j--) {
