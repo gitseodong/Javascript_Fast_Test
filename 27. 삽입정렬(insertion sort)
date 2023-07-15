@@ -1,0 +1,23 @@
+// let arr = Array.from({legnth:30000}, () => Math.floor(Math.random() * 1000));
+let arr = Array.from({length: 30000}, () => Math.floor(Math.random()*1000));
+//아래건 되고, 위에건 안됨???
+console.log(arr);
+let startTime = new Date().getTime();
+
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    for (let j = i; j >= 1; j--) {
+      if (arr[j] < arr[j-1]) {
+        const temp = arr[j];
+        arr[j] = arr[j-1];
+        arr[j-1] = temp;
+      } else {
+        break;
+      }
+    }
+  }
+}
+insertionSort(arr)
+let endTime = new Date().getTime();
+console.log('걸린시간:', endTime - startTime, 'ms');
+console.log(arr);
