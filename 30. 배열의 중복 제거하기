@@ -1,0 +1,4 @@
+let arr = Array.from({length: 30}, () => Math.floor(Math.random() * 60));
+console.log(arr);
+let arr_removed = [...new Set(arr)];
+console.log(arr_removed);
