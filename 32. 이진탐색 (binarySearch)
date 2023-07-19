@@ -2,27 +2,10 @@
 // arr : 찾을 배열, target : 찾을 수, start : 찾을 배열의 시작점 index, end : 찾을 배열의 끝점 index
 // 정렬된 배열만 인수로 넣을 수 있다.
 
-// 1) 재귀함수를 이용한 이진탐색
-function binarySearch(arr, target, start, end) { 
-  if (start > end) return -1;
-  const mid = parseInt((start + end) / 2);
-  if (target === arr[mid]) {
-    return mid;
-  } else if (target < arr[mid]) {
-    return binarySearch(arr, target, start, mid-1);  
-  } else {
-    return binarySearch(arr, target, mid+1, end);
-  }
-}
-
-let arr = [1, 3, 5, 7, 9, 11, 12, 13, 14, 15];
-
-let index = binarySearch(arr, 14, 0, arr.length-1);
-console.log(index);
-
-// 2) 반복문을 이용한 이진탐색
-function binarySearch(arr, target, start, end) {
+// 1) 반복문을 이용한 이진탐색
+function binarySearch_while(arr, target, start, end) {
   while (start <= end) {
+    repeat_while++;
     const mid = parseInt((start + end ) / 2);
     if (target === arr[mid]) {
       return mid;
@@ -35,11 +18,46 @@ function binarySearch(arr, target, start, end) {
   return -1;
 }
 
-let arr = Array.from({length: 30}, () => Math.floor(Math.random() * 100));
+// 2) 재귀함수를 이용한 이진탐색
+function binarySearch_self(arr, target, start, end) { 
+  repeat_self++;
+  if (start > end) return -1;
+  const mid = parseInt((start + end) / 2);
+  if (target === arr[mid]) {
+    return mid;
+  } else if (target < arr[mid]) {
+    return binarySearch_self(arr, target, start, mid-1);  
+  } else {
+    return binarySearch_self(arr, target, mid+1, end);
+  }
+}
+
+let n = 10000000;
+let repeat_self = 0, repeat_while = 0;
+let time1 = new Date().getTime();
+let arr = Array.from({length: n}, () => Math.floor(Math.random() * n));
+let time2 = new Date().getTime();
 arr.sort((a, b) => a - b);
-let target = 55;
+let time3 = new Date().getTime();
+let target = Math.floor(Math.random()*n);
 console.log(arr);
-console.log(binarySearch(arr, target, 0, arr.length-1));
+console.log('랜덤생성시간:', time2 - time1, 'ms');
+console.log('sort시간:', time3 - time2, 'ms');
+
+let time4 = new Date().getTime();
+let index_self = binarySearch_self(arr, target, 0, arr.length-1);
+let time5 = new Date().getTime();
+let index_while = binarySearch_while(arr, target, 0, arr.length-1);
+let time6 = new Date().getTime();
+
+console.log('target:', target);
+console.log('index_self:', index_self);
+console.log('걸린시간(self):', time5 - time4, 'ms');
+console.log('반복횟수(self):', repeat_self);
+console.log('---------------');
+console.log('index_while:', index_while);
+console.log('걸린시간(while):', time6 - time5, 'ms');
+console.log('반복횟수(while):', repeat_while);
 
 
 
