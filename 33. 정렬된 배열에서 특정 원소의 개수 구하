@@ -1,5 +1,5 @@
 // 정렬된 배열에서 특정 원소의 개수 구하기
-// array.filter & length를 이용한 것보다 countByRange가 훨씬 빠름.
+// array.filter & length를 이용한 것보다 countByRange가 훨씬 빠름. filter&length:385ms, countByRange:1ms
 //전체 코드 복사하여 걸리는 시간 체크 가능.
 
 // 정렬된 순서를 유지하면서 배열에 삽입할 가장 왼쪽 인덱스 반환
