@@ -1,6 +1,8 @@
 // 이진탐색
 // arr : 찾을 배열, target : 찾을 수, start : 찾을 배열의 시작점 index, end : 찾을 배열의 끝점 index
 // 정렬된 배열만 인수로 넣을 수 있다.
+
+// 1) 재귀함수를 이용한 이진탐색
 function binarySearch(arr, target, start, end) { 
   if (start > end) return -1;
   const mid = parseInt((start + end) / 2);
@@ -17,3 +19,5 @@ let arr = [1, 3, 5, 7, 9, 11, 12, 13, 14, 15];
 
 let index = binarySearch(arr, 14, 0, arr.length-1);
 console.log(index);
+
+// 2) 반복문을 이용한 이진탐색
