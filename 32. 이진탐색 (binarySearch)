@@ -5,7 +5,7 @@
 // 1) 반복문을 이용한 이진탐색
 function binarySearch_while(arr, target, start, end) {
   while (start <= end) {
-    repeat_while++;
+    repeat_while++; //repeat_while은 이진탐색에 필요치 않음.
     const mid = parseInt((start + end ) / 2);
     if (target === arr[mid]) {
       return mid;
@@ -20,7 +20,7 @@ function binarySearch_while(arr, target, start, end) {
 
 // 2) 재귀함수를 이용한 이진탐색
 function binarySearch_self(arr, target, start, end) { 
-  repeat_self++;
+  repeat_self++; // repeat_self는 이진탐색에 필요치 않음.
   if (start > end) return -1;
   const mid = parseInt((start + end) / 2);
   if (target === arr[mid]) {
