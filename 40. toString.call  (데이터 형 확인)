@@ -1,0 +1,23 @@
+// typeof 는 null, array, obejct 를 모두 object로 표시한다.
+// toString.call(??) 의 ?? 자리에 확인하고 싶은 데이터를 넣으면 모든 데이터의 형 확인이 가능하다.
+
+console.log(typeof "hello" === "string"); // true
+console.log(typeof 123 === "number"); // true
+console.log(typeof false === "boolean"); // true
+console.log(typeof undefined === "undefined"); // true
+console.log(typeof null === "object"); // true
+console.log(typeof [] === "object"); // true
+console.log(typeof {} === "object"); // true
+console.log(typeof function () {} === "function"); // true
+
+//console.log(null.constructor);
+console.log([].constructor === Array); // true
+console.log({}.constructor === Object); // true
+
+console.log(Object.prototype.toString.call(null).slice(8, -1) === "Null"); // true
+
+console.log(toString.call([]).slice(8, -1)); // Array
+console.log(toString.call({}).slice(8, -1)); // Object
+console.log(toString.call(null).slice(8, -1)); // Null
+console.log(toString.call("123").slice(8, -1)); // String
+console.log(toString.call(123).slice(8, -1)); // Number
