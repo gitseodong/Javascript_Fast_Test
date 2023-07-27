@@ -1,0 +1,27 @@
+// 형 변환
+
+// Truthy : true, {}, [], 1, 2, -1, '0', 'false', 'a', Infinity, -Infinity
+// Falsy : false, 0, -0, '', null, undefined, NaN
+
+if (true) { console.log('참'); } else { console.log('거짓'); } //참
+if (false) { console.log('참'); } else { console.log('거짓'); } //거짓
+if ({}) { console.log('참'); } else { console.log('거짓'); }  //참
+if ([]) { console.log('참'); } else { console.log('거짓'); }  //참
+if (1) { console.log('참'); } else { console.log('거짓'); }  //참
+if (-1) { console.log('참'); } else { console.log('거짓'); }  //참
+if (0) { console.log('참'); } else { console.log('거짓'); }  //거짓
+if (-0) { console.log('참'); } else { console.log('거짓'); } //거짓
+if (NaN) { console.log('참'); } else { console.log('거짓'); } //거짓  ( 1 + undefined = NaN )
+if (Infinity) { console.log('참'); } else { console.log('거짓'); } //참
+if (-Infinity) { console.log('참'); } else { console.log('거짓'); } //참
+if (null) { console.log('참'); } else { console.log('거짓'); } //거짓
+if (undefined) { console.log('참'); } else { console.log('거짓'); } //거짓
+if ('0') { console.log('참'); } else { console.log('거짓'); } //참
+if ('false') { console.log('참'); } else { console.log('거짓'); } //참
+if ('a') { console.log('참'); } else { console.log('거짓'); } //참
+if ('') { console.log('참'); } else { console.log('거짓'); } //거짓
+
+// 빈 문자열을 제외한 모든 문자열은 true에 해당함.
+// '0', 'false', 'a'도 문자열에 해당하므로 true로 변환됨
+// 빈 문자열('')은 false로 변환되나, 빈 객체데이터({})과 빈 배열([])은 true로 변환됨
+// 0, -0을 제외한 모든 숫자는 true이고, 0, -0은 false임.
