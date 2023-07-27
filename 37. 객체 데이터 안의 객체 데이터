@@ -1,0 +1,19 @@
+const userA = {
+  name: "John",
+  age: 54,
+};
+
+const userB = {
+  name: "Michael",
+  age: 26,
+  parent: userA,
+};
+
+console.log(userB.parent.name); // John
+console.log(userB["parent"].name); // John
+console.log(userB["parent"]["name"]); // John
+
+const users = [userA, userB];
+
+console.log(users[0].name); //John
+console.log(users[0]["age"]); // 54
