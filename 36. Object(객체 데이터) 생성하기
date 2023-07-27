@@ -41,5 +41,5 @@ console.log(user3["name"]); // JOhn
 
 // 'name' 문자열을 변수 key에 넣어서 활용하는 방법
 const key = 'name';
-console.log(user3[key]); // John
+console.log(user3[key]); // John  - 이와 같이 데이터로 속성의 이름을 조회할 때는 대괄호 표기법으로만 가능함.
 
