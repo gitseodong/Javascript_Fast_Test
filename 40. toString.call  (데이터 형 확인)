@@ -17,7 +17,7 @@ console.log({}.constructor === Object); // true
 console.log(Object.prototype.toString.call(null).slice(8, -1) === "Null"); // true
 
 console.log(toString.call([]).slice(8, -1)); // Array
-console.log(toString.call({}).slice(8, -1)); // Object
+console.log(toString.call({})); // [object Object]
 console.log(toString.call(null).slice(8, -1)); // Null
 console.log(toString.call("123").slice(8, -1)); // String
 console.log(toString.call(123).slice(8, -1)); // Number
