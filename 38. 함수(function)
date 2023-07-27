@@ -1,0 +1,30 @@
+// 함수명 뒤에 () 를 붙이면 함수를 호출하게 된다. Call
+// () 없이 함수명만 사용하는 것은 함수 자체를 말함. 함수를 데이터로 취급함. 아래와 같이 함수를 변수에 넣을 수 있음.
+
+function getNumber() {
+  return 123;
+}
+
+console.log(typeof getNumber); // function
+console.log(typeof getNumber()); // number
+
+const getNumber2 = function () {
+  return 123;
+};
+
+console.log(typeof getNumber2); // function
+console.log(typeof getNumber2()); // number
+
+
+// 함수를 인수로 넣음.
+const a = function () {
+  console.log("A");
+};
+
+const b = function (c) {
+  console.log(c);
+  c();
+};
+
+
+b(a);
