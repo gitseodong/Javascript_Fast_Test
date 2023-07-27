@@ -1,0 +1,5 @@
+const user = new Object();
+user.name = "HEROPY";
+user.age = 85; // name, age를 key 또는 속성 또는 property라고 함.
+
+console.log(user);
