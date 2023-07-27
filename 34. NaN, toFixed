@@ -1,7 +1,7 @@
 const a = 1;
 const b = undefined;
 console.log(a + b); // NaN
-console.log(typeof (a + b)); // number
+console.log(typeof (a + b)); // number    - NaN은 Not A Number 로 숫자가 아니면서, 숫자형이다.
 
 const c = 0.1;
 const d = 0.2;
