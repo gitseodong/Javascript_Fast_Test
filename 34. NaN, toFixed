@@ -1,0 +1,13 @@
+const a = 1;
+const b = undefined;
+console.log(a + b); // NaN
+console.log(typeof (a + b)); // number
+
+const c = 0.1;
+const d = 0.2;
+console.log(c + d); // 0.30000000000000004
+console.log(typeof (c + d)); // number
+console.log((c + d).toFixed(1)); // 0.3
+console.log(typeof (c + d).toFixed(1)); // string
+console.log(Number((c + d).toFixed(1))); // 0.3
+console.log(typeof Number((c + d).toFixed(1))); // number
