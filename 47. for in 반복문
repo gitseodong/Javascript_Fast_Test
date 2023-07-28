@@ -1,0 +1,13 @@
+// for of : 배열, for in : 객체
+// for in 사용시 key가 담긴다.
+
+const user = {
+  name: "John",
+  age: 36,
+  isValid: true,
+  email: "john@example.com",
+};
+
+for (const key in user) {
+  console.log(key, user[key]);
+}
