@@ -1,5 +1,6 @@
 // for of : 배열, for in : 객체
 // for in 사용시 key가 담긴다.
+// 객체 데이터는 순서가 없으므로 for in 사용시 순서가 바뀔 수 있다.
 
 const user = {
   name: "John",
