@@ -1,0 +1,31 @@
+// 선택적 체이닝(Optional Chaining)
+// 점 표기법 user.name 에서 user가 undefined인 경우 점표기법 사용시 오류가 나므로 오류가 나지 않도록 user?.name과 같이 ?를 붙여준다.
+// 그러면 문법적 오류가 나지 않고 undefined를 반환해준다.
+
+const user = {};
+
+console.log(user.name); // undefined
+
+const user2 = null;
+//console.log(user2.name); // 문법적 오류 발생
+console.log(user2?.name); // undefined
+
+const userA = {
+  name: "John",
+  age: 34,
+  address: {
+    country: "Korea",
+    city: "Seoul",
+  },
+};
+const userB = {
+  name: "Neo",
+  age: 22,
+};
+
+function getCity(user) {
+  return user.address?.city || "주소없음";
+}
+
+console.log(getCity(userA)); // Seoul
+console.log(getCity(userB)); // 주소없음
