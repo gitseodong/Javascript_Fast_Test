@@ -1,0 +1,25 @@
+// 구조 분해 할당 (Destructuring assignment) - 객체데이터
+
+let obj = {
+  a: 1,
+  b: 2,
+  c: 3,
+  x: 5,
+};
+
+let g = obj.a;
+let j = obj.b;
+let i = obj.c;
+console.log(g, h, i); // 1 2 3
+
+const { a, b } = obj;
+console.log(a, b); // 1 2
+
+const { x = 4, c: j } = obj;
+console.log(x, j); // 5 1
+
+let { b: k = 100 } = obj;
+console.log(k); // 2
+
+const { c, ...rest } = obj;
+console.log(c, rest); // 3, {a: 1, b: 2, x: 5}
