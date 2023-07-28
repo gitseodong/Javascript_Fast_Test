@@ -1,0 +1,40 @@
+// 구조 분해 할당 (Destructuring assignment)
+
+let arr = [1, 2, 3];
+let a = arr[0];
+let b = arr[1];
+let c = arr[2];
+console.log(a, b, c); // 1 2 3
+
+let [d, e, f] = arr;
+console.log(d, e, f); // 1 2 3
+
+(a = 0), (b = 0), (c = 0);
+
+[a, b, c] = arr;
+console.log(a, b, c); // 1 2 3
+[, b] = arr;
+console.log(b); // 2
+
+[a, rest] = arr; // rest는 변수 이름일뿐, 예약어는 아님.
+console.log(a, rest); //  1 2
+[a, ...rest] = arr;
+console.log(a, rest); // 1, [2, 3]
+
+let obj = {
+  a1: 1,
+  b1: 2,
+  c1: 3,
+  x: 5,
+};
+
+a = obj.a1;
+b = obj.b1;
+c = obj.c1;
+console.log(a, b, c); // 1 2 3
+
+let { a1, b1 } = obj;
+console.log(a1, b1); // 1 2
+
+let { x = 4, a1: y } = obj;
+console.log(x, y); // 5 1
