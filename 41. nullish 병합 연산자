@@ -1,6 +1,7 @@
 // Nullish 병합(Nullish coalescing)
 // or 연산자 : 거짓이면 오른쪽으로 넘어가면서 체크.
 // nullish 병합 연산자 : null 또는 undefined이면 오른쪽으로 넘어가면서 체크.
+// or 연산자는 거짓 전체를 넘어가고, nullish 병합 연산자는 null 또는 undefined만 넘어감.
 
 let n = 0;
 
