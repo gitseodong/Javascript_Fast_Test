@@ -38,3 +38,6 @@ console.log(a1, b1); // 1 2
 
 let { x = 4, a1: y } = obj;
 console.log(x, y); // 5 1
+
+let { b1: z = 10 } = obj;
+console.log(z); // 2
