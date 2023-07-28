@@ -1,4 +1,4 @@
-// 구조 분해 할당(Destructuring assignment) - 배열
+// 구조 분해 할당(Destructuring assignment) - 배열데이터
 
 let arr = [1, 2, 3];
 let a = arr[0];
