@@ -1,0 +1,7 @@
+function getAlert(message) {
+  return message 
+        ? message 
+        : "메시지 없음";
+}
+
+console.log(getAlert("")); // 메시지 없음
