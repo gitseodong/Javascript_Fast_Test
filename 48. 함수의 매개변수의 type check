@@ -1,0 +1,9 @@
+function jegop(number) {
+  if (typeof number !== "number") {
+    console.log("숫자를 입력해주세요.");
+    return 0;
+  }
+  return number * number;
+}
+
+console.log(jegop("숫자"));
