@@ -1,0 +1,15 @@
+// prototype
+
+const fruits = new Array("Apple", "Banana", "Cherry");
+
+console.log(fruits);
+console.log(fruits.length);
+console.log(fruits.includes("Banana"));
+console.log(fruits.includes("Orange"));
+
+// 임의의 heropy라는 함수를 만듦.
+Array.prototype.heropy = function () {
+  console.log(this);
+};
+
+fruits.heropy();
