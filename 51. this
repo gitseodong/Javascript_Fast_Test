@@ -1,0 +1,41 @@
+// this
+// 일반 함수의 this는 호출 위치에서 정의
+// 화살표 함수의 this는 자신이 선언된 함수(렉시컬) 범위에서 정의
+
+const user = {
+  firstName: "Seongchang",
+  lastName: "Jo",
+  age: 41,
+  getFullName: function () {
+    return `${this.firstName} ${this.lastName}`;
+  }, // 여기에서 this 대신 user를 써도 같은 결과가 나온다.
+};
+
+console.log(user.getFullName()); // Seongchang Jo
+
+const user2 = {
+  firstName: "Seongchang",
+  lastName: "Jo",
+  age: 41,
+  getFullName: () => {
+    return `${this.firstName} ${this.lastName}`;
+  }, // 화살표 함수로 바꿈.
+};
+
+console.log(user2.getFullName()); // undefined undefined
+
+function user3() {
+  this.firstName = "Eunjung";
+  this.lastName = "Oh";
+
+  return {
+    firstName: "Seongchang",
+    lastName: "Jo",
+    age: 41,
+    getFullName: () => {
+      return `${this.firstName} ${this.lastName}`;
+    },
+  };
+}
+const u = user3();
+console.log(u.getFullName()); // Eunjung Oh
