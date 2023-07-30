@@ -37,5 +37,21 @@ function user3() {
     },
   };
 }
-const u = user3();
-console.log(u.getFullName()); // Eunjung Oh
+const u3 = user3();
+console.log(u3.getFullName()); // Eunjung Oh
+
+function user4() {
+  this.firstName = "Eunjung";
+  this.lastName = "Oh";
+
+  return {
+    firstName: "Seongchang",
+    lastName: "Jo",
+    age: 41,
+    getFullName: function () {
+      return `${this.firstName} ${this.lastName}`;
+    },
+  };
+}
+const u4 = user4();
+console.log(u4.getFullName()); // Seongchang Jo
