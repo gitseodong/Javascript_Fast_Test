@@ -6,6 +6,7 @@
 // (내생각) 화살표 함수의 this는 일단 자신을 포함하는 가장 안쪽의 함수의 this와 같음.
 
 
+// 1번 예제제
 const user = {
   firstName: "Seongchang",
   lastName: "Jo",
@@ -59,3 +60,17 @@ function user4() {
 }
 const u4 = user4();
 console.log(u4.getFullName()); // Seongchang Jo
+
+// 2번 예제
+const timer = {
+  title: "TIMER!",
+  timeout() {
+    console.log(this.title);
+    setTimeout(() => {
+      console.log(this.title);
+    }, 1000);
+  },
+};
+
+timer.timeout(); // TIMER! 출력 후 1초 후에 TIMER! 출력함.
+// 만약 setTiemout의 callback 함수를 위와 같이 화살표 함수로 만들지 않고 일반 함수로 만든다면 TIMER! 출력 후 1초 후에 undefined 를 출력함.
