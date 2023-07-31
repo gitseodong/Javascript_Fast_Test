@@ -1,0 +1,19 @@
+// static method 예시
+
+class User {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  static isUser(user) {
+    if (user.firstName && user.lastName) return true;
+    else return false;
+  }
+}
+
+const user1 = new User("성창", "조");
+const user2 = "nice";
+
+console.log(User.isUser(user1));
+console.log(User.isUser(user2));
