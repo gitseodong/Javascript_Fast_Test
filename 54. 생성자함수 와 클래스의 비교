@@ -1,0 +1,30 @@
+// 3)의 출력부분은 그대로 놔두고, 1) 또는 2)의 코드 어떤 것을 선택하든 결과는 같다.
+// 아래는 2) 코드를 선택한 상태이고, 2) 코드를 주석처리하고 1) 코드의 주석을 해제해도 결과는 같다.
+
+// 1) 생성자 함수
+// function User(first, last) {
+//   this.firstName = first;
+//   this.lastName = last;
+// }
+// User.prototype.getFullName = function () {
+//   return `${this.firstName} ${this.lastName}`;
+// };
+
+// 2) 클래스
+class User {
+  constructor(first, last) {
+    this.firstName = first;
+    this.lastName = last;
+  }
+
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+// 3) 출력부분
+const heropy = new User("Heropy", "Park");
+const neo = new User("Neo", "Anderson");
+
+console.log(heropy.getFullName());
+console.log(neo.getFullName());
