@@ -19,7 +19,7 @@ console.log(user1.name); // John - 점 표기법
 console.log(user1["name"]); // John - 대괄호 표기법
 
 // 2) 생성자 함수를 이용하는 방법
-// User2라는 생성자 함수를 정의하고, 
+// User2라는 생성자 함수를 정의하고, new User2 를 통해 객체를 인스턴스화하고 초기화함.
 function User2(name, email, age) {
   this.name = name;
   this.email = email;
