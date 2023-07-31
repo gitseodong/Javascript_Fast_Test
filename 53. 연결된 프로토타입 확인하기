@@ -1,0 +1,17 @@
+function User(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+const user1 = new User("조성창", 41);
+
+const user2 = {
+  name: "조성창",
+  age: 41,
+};
+
+console.log(User.prototype.isPrototypeOf(user1)); // true
+console.log(User.prototype.isPrototypeOf(user2)); // false
+
+console.log(Object.prototype.isPrototypeOf(user1)); // true
+console.log(Object.prototype.isPrototypeOf(user2)); // true
