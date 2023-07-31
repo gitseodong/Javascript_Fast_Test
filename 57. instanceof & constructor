@@ -25,3 +25,7 @@ console.log(c instanceof C); // true
 console.log(c.constructor === A); // false
 console.log(c.constructor === B); // false
 console.log(c.constructor === C); // true
+
+const fruits = ["Apple", "Orange"];
+
+console.log(fruits.constructor === Array); // true
