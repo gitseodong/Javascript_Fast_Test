@@ -1,0 +1,21 @@
+class A {
+  constructor() {}
+}
+class B extends A {
+  constructor() {
+    super();
+  }
+}
+class C extends B {
+  constructor() {
+    super();
+  }
+}
+
+const a = new A();
+const b = new B();
+const c = new C();
+
+console.log(c instanceof A); // true
+console.log(c instanceof B); // true
+console.log(c instanceof C); // true
