@@ -16,6 +16,12 @@ const a = new A();
 const b = new B();
 const c = new C();
 
+// instanceof 는 부모클래스까지 모두 true가 나옴.
 console.log(c instanceof A); // true
 console.log(c instanceof B); // true
 console.log(c instanceof C); // true
+
+// constructor를 일치연산자(===)로 클래스와 비교할 때 부모클래스는 false로 나온다.
+console.log(c.constructor === A); // false
+console.log(c.constructor === B); // false
+console.log(c.constructor === C); // true
