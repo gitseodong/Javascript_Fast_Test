@@ -24,7 +24,7 @@ let pi = 3.14;
 console.log(Number.isInteger(num)); // true
 console.log(Number.isInteger(pi)); // false
 
-// Number.isNaN()
+// Number.isNaN(value)
 // 주어진 값이 'NaN'인지 확인함.
 
 let num1 = NaN;
