@@ -1,0 +1,103 @@
+// .length
+// 배열의 길이(숫자)를 반환함.
+
+let arr = ["A", "B", "C"];
+
+console.log(arr.length); // 3
+
+// .at()
+// 대상 배열을 인덱싱함.
+// 음수 사용 가능, 음수 값을 사용하면 뒤에서부터 인덱싱함.
+
+arr = ["A", "B", "C"];
+
+console.log(arr[0]); // A
+console.log(arr.at(0)); // A
+
+console.log(arr[arr.length - 1]); // C
+console.log(arr.at(-1)); // C
+
+// .concat()
+// 대상 배열과 주어진 배열을 병합해 '새로운 배열'을 반환함.
+
+let arr1 = ["A", "B", "C"];
+let arr2 = ["D", "E", "F"];
+let arr3 = arr1.concat(arr2);
+
+console.log(arr1); // ["A", "B", "C"]
+console.log(arr2); // ["D", "E", "F"]
+console.log(arr3); // ["A", "B", "C", "D", "E", "F"]
+
+arr3 = [...arr1, ...arr2]; // concat 대신 전개연산자 사용 가능
+console.log(arr3); // ["A", "B", "C", "D", "E", "F"]
+
+// .every()
+// 대상 배열의 모든 요소가 콜백 테스트에서 참(truthy)을 반환하는지 확인함.
+
+arr = [1, 2, 3, 4];
+let isValid = arr.every((item) => item < 5);
+// 콜백 함수의 return값이 모두 true인 경우에만 true를 출력함.
+console.log(isValid); // true
+isValid = arr.every((item) => item % 2);
+console.log(isValid); // false
+
+// .filter()
+// 주어진 콜백 테스트를 통과(참(truth)을 반환)하는 모든 요소를 '새로운 배열'로 반환함.
+// 모든 요소가 테스트를 통과하지 못하면 빈 배열을 반환함.
+
+let numbers = [1, 20, 7, 9, 104, 0, 58];
+let filteredNumbers = numbers.filter((number) => number < 30);
+console.log(filteredNumbers); // [1, 20, 7, 9, 0]
+filteredNumbers = numbers.filter((number) => number < 0);
+console.log(filteredNumbers); // []
+
+let users = [
+  { name: "Neo", age: 85 },
+  { name: "Amy", age: 22 },
+  { name: "Lewis", age: 11 },
+];
+const adults = users.filter((user) => user.age >= 19);
+console.log(adults); // [ { name: "Neo", age: 85 }, { name: "Amy", age: 22 } ]
+
+// .find()
+// 대상 배열에서 콜백 테스트를 통과하는 첫 번째 요소를 반환함.
+// 첫 번째 요소를 찾으면, 찾는 과정이 종료됨.
+
+arr = [5, 8, 130, 12, 45];
+const foundItem = arr.find((item) => item > 10);
+console.log(foundItem); // 130
+
+users = [
+  { name: "Neo", age: 85 },
+  { name: "Amy", age: 22 },
+  { name: "Lewis", age: 11 },
+];
+
+const foundUser = users.find((user) => user.name === "Amy");
+console.log(foundUser); // {name: 'Amy', age: 22}
+
+// .findIndex()
+// 대상 배열에서 콜백 테스트를 통과하는 첫 번째 요소의 인덱스를 반환함.
+// 첫 번째 요소를 찾으면, 찾는 과정이 종료됨.
+
+arr = [5, 8, 130, 12, 45];
+let index = arr.findIndex((item) => item > 10);
+console.log(index); // 2
+
+// .flat()
+// 대상 배열의 모든 하위 배열을 지정한 깊이(Depth)까지 이어붙인 '새로운 배열'을 생성함.
+// 깊이의 기본값은 '1'이다.
+
+arr = [1, 2, [3, 4, 5]];
+
+console.log(arr.flat()); // [1, 2, 3, 4, 5]
+console.log(arr); // [1, 2, [3, 4, 5]] , 원본 배열 유지.
+
+arr = [1, 2, [3, 4, [5, 6]]];
+console.log(arr.flat()); // [1, 2, 3, 4, [5, 6]]
+console.log(arr.flat(2)); // [1, 2, 3, 4, 5, 6]
+console.log(arr.flat(5)); // [1, 2, 3, 4, 5, 6]
+
+arr = [1, 2, [3, 4, [5, 6, [7, 8]]]];
+console.log(arr.flat(3)); // [1, 2, 3, 4, 5, 6, 7, 8]
+console.log(arr.flat(Infinity)); // [1, 2, 3, 4, 5, 6, 7, 8]
