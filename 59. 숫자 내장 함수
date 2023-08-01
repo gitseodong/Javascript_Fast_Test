@@ -37,7 +37,7 @@ console.log(Number.isNaN(num2)); // false
 console.log(Number.isNaN(str)); // false
 console.log(Number.isNaN(nul)); // false
 
-// Number.parseInt() 또는 parseInt()
+// Number.parseInt(string[, radix]) 또는 parseInt(string[, radix])
 // Number를 붙이지 않아도 기능은 완벽하게 같음.
 // 주어진 값(숫자, 문자)을 파싱(분석)해 특정 진수(radix)의 정수로 반환함.
 // 반올림하지 않고 잘라냄.
