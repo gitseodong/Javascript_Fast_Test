@@ -1,0 +1,65 @@
+// .toFixed()
+// 숫자를 지정된 고정 소수점 표기(자릿수)까지 '반올림'하여 '문자'로 반환함.
+
+let num = 3.1415926535;
+
+console.log(num.toFixed(4)); // 3.1416
+console.log(typeof num.toFixed(4)); // string
+console.log(parseFloat(num.toFixed(4))); // 3.1416
+console.log(typeof parseFloat(num.toFixed(4))); // number
+
+// .toLocaleString()
+// 숫자를 현지 언어 형식의 문자로 반환함.
+
+num = 1000000;
+console.log(num.toLocaleString()); // 1,000,000
+console.log(`${num.toLocaleString()}원`); // 1,000,000원
+
+// Number.isInteger() - static
+// 숫자가 정수(integer)인지 확인함.
+
+num = 123;
+let pi = 3.14;
+
+console.log(Number.isInteger(num)); // true
+console.log(Number.isInteger(pi)); // false
+
+// Number.isNaN()
+// 주어진 값이 'NaN'인지 확인함.
+
+let num1 = NaN;
+let num2 = 123;
+let str = "Hello world";
+let nul = null;
+
+console.log(Number.isNaN(num1)); // true
+console.log(Number.isNaN(num2)); // false
+console.log(Number.isNaN(str)); // false
+console.log(Number.isNaN(nul)); // false
+
+// Number.parseInt() 또는 parseInt()
+// Number를 붙이지 않아도 기능은 완벽하게 같음.
+// 주어진 값(숫자, 문자)을 파싱(분석)해 특정 진수(radix)의 정수로 반환함.
+// 반올림하지 않고 잘라냄.
+// 문자를 정수(숫자)로 바꿔주고, float형도 정수로 바꿔줌.
+// string의 첫 글자를 숫자로 바꿀 수 없으면(공백은 허용), NaN를 반환함.
+
+str = "3.1415926535";
+num = 3.1415926535;
+
+console.log(Number.parseInt(str)); // 3
+console.log(Number.parseInt(num, 10)); // 3
+console.log(parseInt("   3.14", 10)); // 3
+console.log(parseInt("01010101110", 2)); // 686 (해당 문자열을 2진수로 읽어서 10진수로 반환함)
+console.log(parseInt("0xFF")); // 255 (0x 또는 0X로 시작하면 자동으로 16진수로 읽어서 10진수로 반환함)
+
+// Number.parseFloat() 또는 parseFloat()
+// Number를 붙이지 않아도 기능은 완벽하게 같음.
+// 주어진 값(숫자, 문자)를 파싱해 부동소수점 실수(숫자)로 반환함.
+// parseInt와 다르게 두 번째 인수가 없음.
+
+str = "3.1415926535";
+num = 3.1415926535;
+
+console.log(Number.parseFloat(str)); // 3.1415926535
+console.log(Number.parseFloat(num)); // 3.1415926535
