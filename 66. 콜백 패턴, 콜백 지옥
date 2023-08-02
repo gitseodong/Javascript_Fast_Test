@@ -2,18 +2,39 @@
 // - 동기: 순차적으로 코드 실행 O
 // - 비동기: 순차적으로 코드 실행 X
 
-fetch("https://www.omdbapi.com/?apikey=7035c60c&s=frozen")
-  .then((res) => res.json())
-  .then((res) => console.log(res));
+// 콜백(Callback) 패턴 -> 콜백 지옥이 됨.
+// 1, 2, 3, 4 콘솔 출력을 순서대로 보장하는 방법
 
-console.log(1);
-console.log(2);
-console.log(3);
+let a = (callback) => {
+  setTimeout(() => {
+    console.log("1:", 1);
+    callback();
+  }, 300);
+};
+let b = (callback) => {
+  setTimeout(() => {
+    console.log("2:", 2);
+    callback();
+  }, 300);
+};
+let c = (callback) => {
+  setTimeout(() => {
+    console.log("3:", 3);
+    callback();
+  }, 300);
+};
+let d = () => console.log("4:", 4);
 
-// 콜백(Callback) 패턴
+a(() => {
+  b(() => {
+    c(() => {
+      d();
+    });
+  });
+});
 
 // 아래의 코드는 영화 순서가 보장되지 않는다.
-const getMovies = (movieName, callback) => {
+let getMovies = (movieName, callback) => {
   fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
     .then((res) => res.json())
     .then((res) => {
@@ -44,5 +65,3 @@ getMovies("frozen", () => {
     });
   });
 });
-
-// Promise
