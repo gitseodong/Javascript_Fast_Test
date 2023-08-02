@@ -3,35 +3,31 @@
 // - 비동기: 순차적으로 코드 실행 X
 
 // 콜백(Callback) 패턴 -> 콜백 지옥이 됨.
-// 1, 2, 3, 4 콘솔 출력을 순서대로 보장하는 방법
 
-let a = (callback) => {
+// 아래는 1, 2, 3, 4의 출력 순서를 보장하지 않음.
+let a = (callback, index) => {
   setTimeout(() => {
-    console.log("1:", 1);
+    console.log(index);
     callback();
-  }, 300);
+  }, Math.floor(Math.random() * 500 + 500));
 };
-let b = (callback) => {
-  setTimeout(() => {
-    console.log("2:", 2);
-    callback();
-  }, 300);
-};
-let c = (callback) => {
-  setTimeout(() => {
-    console.log("3:", 3);
-    callback();
-  }, 300);
-};
-let d = () => console.log("4:", 4);
+
+a(() => {}, 1);
+a(() => {}, 2);
+a(() => {}, 3);
+a(() => {}, 4);
+
+// 1, 2, 3, 4의 출력 순서를 보장하기 위해 아래와 같이 코드를 작성함.
+// 콜백이 들여쓰기 형태로 계속 들어가므로, 콜백 지옥이 됨.
 
 a(() => {
-  b(() => {
-    c(() => {
-      d();
-    });
-  });
-});
+  a(() => {
+    a(() => {
+      a(() => {}, 4);
+    }, 3);
+  }, 2);
+}, 1);
+
 
 // 아래의 코드는 영화 순서가 보장되지 않는다.
 let getMovies = (movieName, callback) => {
@@ -56,6 +52,7 @@ getMovies("avatar", () => {
 // 겨울왕국->어벤져스->아바타 실행 순서 보장하기
 // 그러나 코드가 들여쓰기 형태로 파고들어가서 콜백지옥이 됨.
 // 콜백패턴은 오래전부터 사용해왔지만, 콜백지옥이 되는 단점이 있다.
+
 getMovies("frozen", () => {
   console.log("겨울왕국!");
   getMovies("avengers", () => {
