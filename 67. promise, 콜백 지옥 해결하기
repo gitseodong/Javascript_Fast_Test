@@ -1,0 +1,145 @@
+// Promise
+// new Promise의 return은 Promise() 소괄호 안의 콜백함수의 실행과 같다.(?)
+
+
+const a = () => console.log(1);
+a(); // 1
+
+const b = () => new Promise(() => console.log(2));
+b(); // 2
+
+
+// 이 코드에서 (1)과 (2)는 둘다 같은 결과를 보임
+// setTimeout()은 영화 데이터를 받아오는 시간이 필요하다는 것을 의미하는 코드
+// console.log(value)가 실행된다는 것은 영화 데이터가 다 받아와졌다는 것을 알려주는 의미를 갖는 코드
+// console.log('1실행완성!')은 영화 데이터를 받아온 후 영화 데이터를 화면에 출력해주는 코드를 의미함. 그래서 영화 데이터를 받아 온 후에 실행되어야 함.
+
+// (1) 기본코드, console.log(value) 다음에 console.log('실행완성!')이 출력되는 것은 보장되나, 1,2,3,4의 순서는 보장되지 않음.
+const a = (value, callback) => {
+  setTimeout(() => {
+    console.log(`${value} 데이터를 받아옴`);
+    if (callback) callback();
+  }, Math.floor(Math.random() * 500 + 500));
+};
+a(1, () => console.log("1을 화면에 출력하는 코드"));
+a(2, () => console.log("2를 화면에 출력하는 코드"));
+a(3, () => console.log("3을 화면에 출력하는 코드"));
+a(4, () => console.log("4를 화면에 출력하는 코드"));
+
+<console 출력값>
+1 데이터를 받아옴
+1을 화면에 출력하는 코드
+4 데이터를 받아옴
+4를 화면에 출력하는 코드
+3 데이터를 받아옴
+3을 화면에 출력하는 코드
+2 데이터를 받아옴
+2를 화면에 출력하는 코드
+
+// (2) Promise만 적용된 상태 (1)과 같은 결과를 보임.
+const a = (value, callback) =>
+  new Promise(() => {
+    setTimeout(() => {
+      console.log(`${value} 데이터를 받아옴`);
+      if (callback) callback();
+    }, Math.floor(Math.random() * 500 + 500));
+  });
+a(1, () => console.log("1을 화면에 출력하는 코드"));
+a(2, () => console.log("2를 화면에 출력하는 코드"));
+a(3, () => console.log("3을 화면에 출력하는 코드"));
+a(4, () => console.log("4를 화면에 출력하는 코드"));
+
+<console 출력값>
+1 데이터를 받아옴
+1을 화면에 출력하는 코드
+4 데이터를 받아옴
+4를 화면에 출력하는 코드
+3 데이터를 받아옴
+3을 화면에 출력하는 코드
+2 데이터를 받아옴
+2를 화면에 출력하는 코드
+
+// (3) 위의 (2)에서 1, 2, 3, 4 출력 순서 보장한 코드
+
+
+
+// (1) 출력순서 보장X
+const a = (value, callback) => {
+  setTimeout(() => {
+    console.log(value);
+    if (callback) callback();
+  }, Math.floor(Math.random() * 500 + 500));
+};
+a(1, () => console.log("1실행완성!"));
+a(2, () => console.log("2실행완성!"));
+a(3, () => console.log("3실행완성!"));
+a(4, () => console.log("4실행완성!"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 영화 데이터를 가져오는 예시
+
+// (1) 다음은 영화의 출력 순서를 보장하지 않음.
+const getMovies = (movieName, callback) => {
+  fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      if (callback) callback();
+    });
+};
+
+getMovies("frozen", () => console.log("겨울왕국!"));
+getMovies("avengers", () => console.log("어벤져스!"));
+getMovies("avatar", () => console.log("아바타!"));
+
+// (2) promise를 추가하였으나 출력 순서를 보장하지 않음
+const getMovies = (movieName, callback) =>
+  new Promise(() => {
+    fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        if (callback) callback();
+      });
+  });
+
+getMovies("frozen", () => console.log("겨울왕국!"));
+getMovies("avengers", () => console.log("어벤져스!"));
+getMovies("avatar", () => console.log("아바타!"));
+
+
+
+const getMovies = (movieName) =>
+  new Promise((resolve) => {
+    fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        if (resolve) resolve();
+      });
+  });
+
+getMovies("frozen").then(() => {
+  console.log("겨울왕국!");
+});
+getMovies("avengers").then(() => {
+  console.log("어벤져스!");
+});
+getMovies("avatar").then(() => {
+  console.log("아바타!");
+});
+
+
+// 다음은 promise를 이용하여 콜백지옥을 만들지 않고 영화 순서 출력 보장하기
