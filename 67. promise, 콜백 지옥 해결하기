@@ -240,3 +240,11 @@ getMovies("frozen")
     return getMovies("avatar");
   })
   .then(() => console.log("아바타 데이터 출력"));
+
+<console 출력값>
+frozen {Search: Array(10), totalResults: '350', Response: 'True'}
+겨울왕국 데이터 출력
+avengers {Search: Array(10), totalResults: '147', Response: 'True'}
+어벤져스 데이터 출력
+avatar {Search: Array(10), totalResults: '104', Response: 'True'}
+아바타 데이터 출력
