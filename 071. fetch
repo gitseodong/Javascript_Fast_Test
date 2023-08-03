@@ -1,0 +1,55 @@
+// fetch(주소, 옵션)
+// 네트워크를 통해 리소스의 요청(Request) 및 응답(Response)을 처리할 수 있다.
+// Promise 인스턴스를 반환함.
+// Promise 인스턴스에는 .then을 체이닝하여 사용할 수 있다.
+// Promise 인스턴스에는 Prototype, PromiseState, PromiseResult의 3가지 속성을 가지고 있고,
+// 체이닝한 .then()의 소괄호 안의 매개변수에 PromiseResult값을 자동으로 입력시켜준다.
+// PromiseResult 안의 prototype 함수인 json()을 실행시키면 다시 Promise를 반환하는데,
+// fetch가 반환된 Promise는 PromiseResult가 respose 형식이고, json()이 반환한 Promise의
+// PromiseResult는 Object 형식라는 차이가 있다.
+// json()을 반환하는 것에 또 다시 .then을 체이닝하여 쓸 수 있고,
+// .then 의 소괄호 안의 매개변수에 json()이 반환한 Promise의 PromiseResult를 자동으로 입력시켜준다.
+// 이 때의 PremoseResult는 Object 형태이다.
+
+
+// 아래는 반환값들을 확인해보는 코드이다.
+// 이 코드를 통해 위의 내용들을 알게 되었다.
+console.log(
+  "fetch의 반환값 :",
+  fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=avengers`)
+);
+fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=avengers`)
+  .then((res) => {
+    console.log("res :", res);
+    const a = res.json();
+    console.log("res.json :", a);
+    return a;
+  })
+  .then((json) => console.log(json));
+
+// (1)의 코드를 (2)의 코드와 같이 쓸 수 있다.
+// (1)
+fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=avengers`)
+  .then((res) => res.json())
+  .then((json) => console.log(json));
+
+// (2)
+const wrap = async () => {
+  const res = await fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=avatar`);
+  const json = await res.json();
+  console.log(json);
+};
+wrap();
+
+// fetch의 두번째 인수인 옵션에 대한 내용
+fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=avengers`, {
+  method: "GET",
+  headers: { // 서버로 전송하는 요청에 대한 정보를 담고 있다.
+    'Content-Type': 'application/json'
+  },
+  body:JSON.stringify({ // 서버로 전송하고 싶은 데이터, JSON 문자열로 작성되어야 함. JSON.stringify이용
+    name: 'HEROPY',
+    age: 85,
+    email: 'seodong56@nate.com',
+  })
+})
