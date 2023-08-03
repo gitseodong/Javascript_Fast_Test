@@ -91,31 +91,48 @@ let getMovies = (movieName, callback) => {
   fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
+      console.log(movieName, res);
+      if (callback !== undefined) callback();
+    });
+};
+
+getMovies("frozen", () => console.log("겨울왕국 데이터 출력"));
+getMovies("avengers", () => console.log("어벤져스 데이터 출력"));
+getMovies("avatar", () => console.log("아바타 데이터 출력"));
+
+<console 출력값>
+avengers {Search: Array(10), totalResults: '147', Response: 'True'}
+어벤져스 데이터 출력
+frozen {Search: Array(10), totalResults: '350', Response: 'True'}
+겨울왕국 데이터 출력
+avatar {Search: Array(10), totalResults: '104', Response: 'True'}
+아바타 데이터 출력
+
+// 콜백패턴을 이용하여 겨울왕국->어벤져스->아바타 실행 순서 보장하기
+// 콜백패턴은 들여쓰기 형태로 이루어져 있어 콜백지옥이 됨.
+// 콜백패턴은 오래전부터 사용해왔지만, 콜백지옥이 되는 단점이 있다.
+
+let getMovies = (movieName, callback) => {
+  fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(movieName, res);
       if (callback !== undefined) callback();
     });
 };
 
 getMovies("frozen", () => {
-  console.log("겨울왕국!");
-});
-getMovies("avengers", () => {
-  console.log("어벤져스!");
-});
-getMovies("avatar", () => {
-  console.log("아바타!");
-});
-
-// 겨울왕국->어벤져스->아바타 실행 순서 보장하기
-// 그러나 코드가 들여쓰기 형태로 파고들어가서 콜백지옥이 됨.
-// 콜백패턴은 오래전부터 사용해왔지만, 콜백지옥이 되는 단점이 있다.
-
-getMovies("frozen", () => {
-  console.log("겨울왕국!");
+  console.log("겨울왕국 데이터 출력");
   getMovies("avengers", () => {
-    console.log("어벤져스!");
-    getMovies("avatar", () => {
-      console.log("아바타!");
-    });
+    console.log("어벤져스 데이터 출력");
+    getMovies("avatar", () => console.log("아바타 데이터 출력"));
   });
 });
+
+<console 출력값>
+frozen {Search: Array(10), totalResults: '350', Response: 'True'}
+겨울왕국 데이터 출력
+avengers {Search: Array(10), totalResults: '147', Response: 'True'}
+어벤져스 데이터 출력
+avatar {Search: Array(10), totalResults: '104', Response: 'True'}
+아바타 데이터 출력
