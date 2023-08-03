@@ -1,0 +1,26 @@
+// 아래 주석처리된 forEach에서는 영화 순서를 보장할 수 없다.
+// async를 forEach 내부의 콜백함수에 쓸 수 밖에 없고, 그러면 전체를 감싸는 async를 코딩할 수 없다.
+// for of 문을 이용해 콜백함수를 없애고, for문을 감싸는 async 함수를 만들어 실행시키면 된다.
+
+const getMovies = (movieName) => {
+  return new Promise((resolve) => {
+    fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+      .then((res) => res.json())
+      .then((res) => resolve(res));
+  });
+};
+
+const titles = ["frozen", "avengers", "avatar"];
+
+// titles.forEach(async (title) => {
+//   const movies = await getMovies(title);
+//   console.log(title, movies);
+// });
+
+const wrap = async () => {
+  for (let title of titles) {
+    const movies = await getMovies(title);
+    console.log(title, movies);
+  }
+};
+wrap();
