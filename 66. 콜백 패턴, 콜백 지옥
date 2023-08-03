@@ -29,7 +29,8 @@ a(() => {
 }, 1);
 
 // 아래는 위의 코드에서 callback을 추가함.
-// 출력 순서를 보장하지 않음
+// console.log(`${value} 데이터를 받아옴`); 와 console.log("1을 화면에 출력하는 코드") 의 순서는 보장되나,
+// 1, 2, 3, 4의 순서는 보장되지 않음.
 const a = (value, callback) => {
   setTimeout(() => {
     console.log(`${value} 데이터를 받아옴`);
