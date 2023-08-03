@@ -13,9 +13,13 @@ const b = () => console.log(2);
 
 a().then(() => b());
 
+<console 출력값>
+1
+2
+
 // 위와 같이 then을 이용해도 1과 2가 순차적으로 출력된다.
 // 이를 다음과 같이 async & await를 이용하여 순차적으로 출력할 수도 있다.
-// 실행이 완전히 끝나기를 기다리는 함수 앞에 await를 쓰고
+// 실행이 완전히 끝나기를 기다리는 함수 앞에 await를 쓰고 (await는 Promise를 return 하는 함수에만 사용할 수 있다.)
 // 그 다음에 실행될 함수를 그 다음 줄에 작성한다.
 // 그리고 그 전체를 함수로 감싸고, 그 함수 앞에 async 키워드를 붙여준다.
 // 그리고 async 키워드가 붙은 함수를 실행한다.
@@ -25,3 +29,37 @@ const wrap = async () => {
   b();
 };
 wrap();
+
+<console 출력값>
+1
+2
+
+
+// 영화 데이터 가져오는 코드에서 async, await 사용하기
+let getMovies = (movieName) =>
+  new Promise((resolve) => {
+    fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(movieName, res);
+        if (resolve) resolve();
+      });
+  });
+
+const wrap = async () => {
+  await getMovies("frozen");
+  console.log("겨울왕국 데이터 출력");
+  await getMovies("avengers");
+  console.log("어벤져스 데이터 출력");
+  await getMovies("avatar");
+  console.log("아바타 데이터 출력");
+};
+wrap();
+
+<console 출력값>
+frozen {Search: Array(10), totalResults: '350', Response: 'True'}
+겨울왕국 데이터 출력
+avengers {Search: Array(10), totalResults: '147', Response: 'True'}
+어벤져스 데이터 출력
+avatar {Search: Array(10), totalResults: '104', Response: 'True'}
+아바타 데이터 출력
