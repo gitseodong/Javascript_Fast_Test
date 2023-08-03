@@ -1,0 +1,31 @@
+// document.getElementById()
+
+// HTML `id` 속성(Attributes) 값으로 검색한 요소를 반환함.
+// 여러 요소가 검색되면, 가장 먼저 찾은 요소만 반환함.
+// 검색 결과가 없으면, `null`을 반환함.
+
+let el = document.getElementById("child2");
+
+console.log(el);
+
+// document.querySelector()
+
+// 'CSS 선택자'로 검색한 요소를 하나 반환함.
+// 여러 요소가 검색되면, 가장 먼저 찾은 요소만 반환함.
+// 검색 결과가 없으면, `null`을 반환함.
+
+el = document.querySelector(".child:first-child");
+console.log(el);
+
+// document.querySelectorAll()
+
+// 'CSS 선택자'로 검색한 모든 요소를 `NodeList`로 반환함.
+// `NodeList` 객체는 `.forEach()`를 사용할 수 있다.
+// NodeList는 유사배열(ArrayLike)이다.
+// Array.from()을 통해 배열로 변환할 수 있다.
+
+let nodeList = document.querySelectorAll(".child");
+console.log(nodeList);
+nodeList.forEach((el) => console.log(el.textContent));
+
+console.log(Array.from(nodeList).reverse());
