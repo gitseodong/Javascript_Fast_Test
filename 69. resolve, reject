@@ -46,3 +46,45 @@ const wrap = async () => {
   }
 };
 wrap();
+
+// 영화 데이터 받아오는 코드를 이용한 예시
+const getMovies = (movieName) => {
+  return new Promise((resolve, reject) => {
+    fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+      .then((res) => res.json())
+      .then((json) => {
+        console.log("JSON :", json);
+        if (json.Response === "False") {
+          reject(json.Error);
+        }
+        resolve(json);
+      });
+  });
+};
+
+getMovies("avatar")
+  .then((movies) => {
+    console.log("데이터 잘 받아옴!");
+    console.log("영화목록 :", movies);
+  })
+  .catch((error) => {
+    console.log("데이터 받아오기 실패!");
+    console.log("에러 종류 :", error);
+  })
+  .finally(() => {
+    console.log("오류가 있든 없든 완전 종료됨.");
+  });
+
+const wrap = async () => {
+  try {
+    const movies = await getMovies("avatar");
+    console.log("데이터 잘 받아옴!");
+    console.log("영화목록 :", movies);
+  } catch (error) {
+    console.log("데이터 받아오기 실패!");
+    console.log("에러 종류 :", error);
+  } finally {
+    console.log("오류가 있든 없든 완전 종료됨.");
+  }
+};
+wrap();
