@@ -87,28 +87,65 @@ a(1, () => {
 4를 화면에 출력하는 코드
 
 
-// (1) 출력순서 보장X
-const a = (value, callback) => {
-  setTimeout(() => {
-    console.log(value);
-    if (callback) callback();
-  }, Math.floor(Math.random() * 500 + 500));
-};
-a(1, () => console.log("1실행완성!"));
-a(2, () => console.log("2실행완성!"));
-a(3, () => console.log("3실행완성!"));
-a(4, () => console.log("4실행완성!"));
+// (4) (2)의 코드에서 then만 추가.
+// callback 매개변수를 빼고, Promise 내부에 resolve 매개변수를 넣음. callback으로 넣었던 console.log() 코드를 then의 소괄호 안에 넣어주면 순차적으로 실행됨.
+// Promise를 반환되는 것에 .then()을 붙일 수 있고, then의 소괄호 내부에 바로 다음에 실행되기를 원하는 코드를 넣으면 됨.
+// then()이 Promise를 return하도록 코딩하면 then다음에 then을 체이닝으로 붙일 수 있다.
+// 결과는 위의 (2)와 같음 
+const a = (value) =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`${value} 데이터를 받아옴`);
+      if (resolve) resolve();
+    }, Math.floor(Math.random() * 500 + 500));
+  });
+a(1).then(() => console.log("1을 화면에 출력하는 코드"));
+a(2).then(() => console.log("2를 화면에 출력하는 코드"));
+a(3).then(() => console.log("3을 화면에 출력하는 코드"));
+a(4).then(() => console.log("4를 화면에 출력하는 코드"));
 
+<console 출력값>
+1 데이터를 받아옴
+1을 화면에 출력하는 코드
+4 데이터를 받아옴
+4를 화면에 출력하는 코드
+3 데이터를 받아옴
+3을 화면에 출력하는 코드
+2 데이터를 받아옴
+2를 화면에 출력하는 코드
 
+// (5) then을 이어붙임. 콜백지옥에서 벗어남.
+const a = (value) =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(`${value} 데이터를 받아옴`);
+      if (resolve) resolve();
+    }, Math.floor(Math.random() * 500 + 500));
+  });
+a(1)
+  .then(() => {
+    console.log("1을 화면에 출력하는 코드");
+    return a(2);
+  })
+  .then(() => {
+    console.log("2를 화면에 출력하는 코드");
+    return a(3);
+  })
+  .then(() => {
+    console.log("3을 화면에 출력하는 코드");
+    return a(4);
+  })
+  .then(() => console.log("4를 화면에 출력하는 코드"));
 
-
-
-
-
-
-
-
-
+<console 출력값>
+1 데이터를 받아옴
+1을 화면에 출력하는 코드
+2 데이터를 받아옴
+2를 화면에 출력하는 코드
+3 데이터를 받아옴
+3을 화면에 출력하는 코드
+4 데이터를 받아옴
+4를 화면에 출력하는 코드
 
 
 
