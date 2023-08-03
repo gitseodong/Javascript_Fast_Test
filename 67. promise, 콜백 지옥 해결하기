@@ -180,8 +180,7 @@ getMovies("frozen", () => console.log("겨울왕국!"));
 getMovies("avengers", () => console.log("어벤져스!"));
 getMovies("avatar", () => console.log("아바타!"));
 
-
-
+// (3) then을 추가함, 출력 순서를 보장하지 않음. (2)와 같은 결과
 const getMovies = (movieName) =>
   new Promise((resolve) => {
     fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
@@ -192,15 +191,9 @@ const getMovies = (movieName) =>
       });
   });
 
-getMovies("frozen").then(() => {
-  console.log("겨울왕국!");
-});
-getMovies("avengers").then(() => {
-  console.log("어벤져스!");
-});
-getMovies("avatar").then(() => {
-  console.log("아바타!");
-});
+getMovies("frozen").then(() => console.log("겨울왕국!"));
+getMovies("avengers").then(() => console.log("어벤져스!"));
+getMovies("avatar").then(() => console.log("아바타!"));
 
 
-// 다음은 promise를 이용하여 콜백지옥을 만들지 않고 영화 순서 출력 보장하기
+//
