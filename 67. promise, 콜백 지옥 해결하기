@@ -152,48 +152,91 @@ a(1)
 // 영화 데이터를 가져오는 예시
 
 // (1) 다음은 영화의 출력 순서를 보장하지 않음.
-const getMovies = (movieName, callback) => {
+let getMovies = (movieName, callback) => {
   fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
+      console.log(movieName, res);
       if (callback) callback();
     });
 };
 
-getMovies("frozen", () => console.log("겨울왕국!"));
-getMovies("avengers", () => console.log("어벤져스!"));
-getMovies("avatar", () => console.log("아바타!"));
+getMovies("frozen", () => console.log("겨울왕국 데이터 출력"));
+getMovies("avengers", () => console.log("어벤져스 데이터 출력"));
+getMovies("avatar", () => console.log("아바타 데이터 출력"));
 
-// (2) promise를 추가하였으나 출력 순서를 보장하지 않음
-const getMovies = (movieName, callback) =>
+<console 출력값>
+avengers {Search: Array(10), totalResults: '147', Response: 'True'}
+어벤져스 데이터 출력
+frozen {Search: Array(10), totalResults: '350', Response: 'True'}
+겨울왕국 데이터 출력
+avatar {Search: Array(10), totalResults: '104', Response: 'True'}
+아바타 데이터 출력
+
+// (2) promise를 추가하였으나 출력 순서를 보장하지 않음, (1)과 같은 결과
+let getMovies = (movieName, callback) =>
   new Promise(() => {
     fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        console.log(movieName, res);
         if (callback) callback();
       });
   });
 
-getMovies("frozen", () => console.log("겨울왕국!"));
-getMovies("avengers", () => console.log("어벤져스!"));
-getMovies("avatar", () => console.log("아바타!"));
+getMovies("frozen", () => console.log("겨울왕국 데이터 출력"));
+getMovies("avengers", () => console.log("어벤져스 데이터 출력"));
+getMovies("avatar", () => console.log("아바타 데이터 출력"));
+
+<console 출력값>
+avengers {Search: Array(10), totalResults: '147', Response: 'True'}
+어벤져스 데이터 출력
+frozen {Search: Array(10), totalResults: '350', Response: 'True'}
+겨울왕국 데이터 출력
+avatar {Search: Array(10), totalResults: '104', Response: 'True'}
+아바타 데이터 출력
 
 // (3) then을 추가함, 출력 순서를 보장하지 않음. (2)와 같은 결과
-const getMovies = (movieName) =>
+let getMovies = (movieName) =>
   new Promise((resolve) => {
     fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+        console.log(movieName, res);
         if (resolve) resolve();
       });
   });
 
-getMovies("frozen").then(() => console.log("겨울왕국!"));
-getMovies("avengers").then(() => console.log("어벤져스!"));
-getMovies("avatar").then(() => console.log("아바타!"));
+getMovies("frozen").then(() => console.log("겨울왕국 데이터 출력"));
+getMovies("avengers").then(() => console.log("어벤져스 데이터 출력"));
+getMovies("avatar").then(() => console.log("아바타 데이터 출력"));
 
+<console 출력값>
+avengers {Search: Array(10), totalResults: '147', Response: 'True'}
+어벤져스 데이터 출력
+frozen {Search: Array(10), totalResults: '350', Response: 'True'}
+겨울왕국 데이터 출력
+avatar {Search: Array(10), totalResults: '104', Response: 'True'}
+아바타 데이터 출력
 
-//
+// (4) then을 이어붙여 출력 순서를 보장함. 콜백 지옥에서 벗어남.
+let getMovies = (movieName) =>
+  new Promise((resolve) => {
+    fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${movieName}`)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(movieName, res);
+        if (resolve) resolve();
+      });
+  });
+
+getMovies("frozen")
+  .then(() => {
+    console.log("겨울왕국 데이터 출력");
+    return getMovies("avengers");
+  })
+  .then(() => {
+    console.log("어벤져스 데이터 출력");
+    return getMovies("avatar");
+  })
+  .then(() => console.log("아바타 데이터 출력"));
