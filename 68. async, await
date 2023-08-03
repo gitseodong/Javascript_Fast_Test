@@ -1,0 +1,27 @@
+// async / await
+
+const a = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log(1);
+      resolve();
+    }, 1000);
+  });
+};
+
+const b = () => console.log(2);
+
+a().then(() => b());
+
+// 위와 같이 then을 이용해도 1과 2가 순차적으로 출력된다.
+// 이를 다음과 같이 async & await를 이용하여 순차적으로 출력할 수도 있다.
+// 실행이 완전히 끝나기를 기다리는 함수 앞에 await를 쓰고
+// 그 다음에 실행될 함수를 그 다음 줄에 작성한다.
+// 그리고 그 전체를 함수로 감싸고, 그 함수 앞에 async 키워드를 붙여준다.
+// 그리고 async 키워드가 붙은 함수를 실행한다.
+
+const wrap = async () => {
+  await a();
+  b();
+};
+wrap();
