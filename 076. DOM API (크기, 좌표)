@@ -1,0 +1,29 @@
+// window.innerWidth / window.innerHeight
+
+// 현재 화면(Viewport)의 크기를 얻음.
+
+console.log(window.innerWidth);
+console.log(window.innerHeight);
+
+// window.scrollX / window.scrollY
+
+// 페이지의 좌상단 기준, 현재 화면(Viewport))의
+// 수평 혹은 수직 스크롤 위치를 얻음.
+
+console.log(window.scrollX, window.scrollY);
+
+// window.scrollTo() / window.scrollTo()
+
+// 지정된 좌표로 대상(화면, 스크롤 요소)를 스크롤함.
+// 대상.scrollTo(X좌표, Y좌표)
+// 대상.scrollTo({ left: X, top: Y, behavior: 'smooth' })
+
+setTimeout(() => {
+  window.scrollTo({ top: 1500, left: 0, behavior: "smooth" });
+}, 500);
+
+let parentEl = document.querySelector(".parent");
+
+setTimeout(() => {
+  parentEl.scrollTo({ top: 200, left: 0, behavior: "smooth" });
+}, 1500);
