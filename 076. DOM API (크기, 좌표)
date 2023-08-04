@@ -70,3 +70,13 @@ window.parentEl = document.querySelector(".parent");
 // console창에서 parentEl 을 사용하기 위한 코드.
 console.log(parentEl.scrollLeft, parentEl.scrollTop);
 // parentEl을 스크롤해서 내리고, console에 바로 위 코드를 복사해서 확인해본다.
+
+// E.offsetLeft / E.offsetTop
+// 페이지의 좌상단 기준, 요소의 위치를 얻음
+// 항상 Viewport를 기준으로 함.
+
+let parentEl = document.querySelector(".parent");
+let childEl = document.querySelector(".child");
+
+console.log(parentEl.offsetLeft, parentEl.offsetTop); // 8 1508
+console.log(childEl.offsetLeft, childEl.offsetTop); // 38 1638
