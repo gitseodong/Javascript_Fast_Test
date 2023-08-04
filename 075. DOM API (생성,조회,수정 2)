@@ -89,3 +89,16 @@ console.log(el.style.width);
 console.log(el.style.fontSize);
 console.log(el.style.backgroundColor);
 console.log(el.style.position);
+
+// window.getComputedStyle()
+// 요소에 적용된 스타일 객체를 반환함.
+// CSS 파일로부터 적용된 내용까지 확인가능.
+
+let el = document.querySelector(".child");
+let styles = window.getComputedStyle(el);
+
+console.log(styles.width);
+console.log(styles.fontSize);
+console.log(styles.backgroundColor);
+console.log(styles.position);
+console.log(styles);
