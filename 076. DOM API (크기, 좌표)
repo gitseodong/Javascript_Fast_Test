@@ -44,3 +44,19 @@ console.log(childEl.clientWidth, childEl.clientHeight);
 // parent의 clientWidth인 321에서 padding값 40을 빼고,
 // border값 20을 빼면 261임.(소수점이 있어서 1 차이날 수 있는듯)
 // height는 style에 지정한 100이 나옴
+
+// E.offsetWidth / E.offsetHeight
+// 테두리 선(border)를 포함한 요소의 크기를 얻음
+
+let parentEl = document.querySelector(".parent");
+let childEl = document.querySelector(".child");
+
+console.log(parentEl.offsetWidth, parentEl.offsetHeight);
+// 360 260
+// width 300 + padding 40 + border 20
+// height 200 + padding 40 + border 20
+
+console.log(childEl.offsetWidth, childEl.offsetHeight);
+// 281 120
+// parent (360 - padding 40 - border 20) - scrollbar 19
+// height 100 + border 20
