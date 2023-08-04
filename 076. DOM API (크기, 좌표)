@@ -80,3 +80,21 @@ let childEl = document.querySelector(".child");
 
 console.log(parentEl.offsetLeft, parentEl.offsetTop); // 8 1508
 console.log(childEl.offsetLeft, childEl.offsetTop); // 38 1638
+
+// E.getBoundingClientRect()
+// 테두리 선(border)을 포함한 요소의 크기와
+// 화면에서의 상대 위치 정보를 얻음
+// DOMRect라는 객체데이터를 반환함.
+// 그 속성들 중 width와 height는 offsetWidth, offsetHeight의 결과값과 같다.
+// x : 보여지는 화면에서 x축 위치, y : 보여지는 화면에서 y축 위치
+// left : 보여지는 화면의 좌측을 기준으로  요소 좌측의 위치, x와 같음
+// right : 보여지는 화면의 좌측을 기준 요소 우측의 위치 (화면 우측을 기준으로 하지 않음)
+// top : 보여지는 화면 상단을 기준 요소 상단의 위치, y와 같음
+// bottom : 보여지는 화면 상단을 기준 요소 하단의 위치 (화면 하단을 기준으로 하지 않음)
+
+
+let parentEl = document.querySelector(".parent");
+let childEl = document.querySelector(".child");
+
+console.log(parentEl.getBoundingClientRect());
+console.log(childEl.getBoundingClientRect());
