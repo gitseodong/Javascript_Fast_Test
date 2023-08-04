@@ -60,3 +60,13 @@ console.log(childEl.offsetWidth, childEl.offsetHeight);
 // 281 120
 // parent (360 - padding 40 - border 20) - scrollbar 19
 // height 100 + border 20
+
+// E.scrollLeft / E.scrollTop
+// 스크롤 요소의 좌상단 기준,
+// 현재 스크롤 요소의 수평 혹은 수직 스크롤 위치를 얻음
+// window.scrollX / window.scrollY와 비슷함.
+
+window.parentEl = document.querySelector(".parent");
+// console창에서 parentEl 을 사용하기 위한 코드.
+console.log(parentEl.scrollLeft, parentEl.scrollTop);
+// parentEl을 스크롤해서 내리고, console에 바로 위 코드를 복사해서 확인해본다.
