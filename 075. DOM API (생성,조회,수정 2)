@@ -44,3 +44,24 @@ console.log(el.className);
 el.className += " child1 active";
 console.log(el.className);
 console.log(el);
+
+// E.classList
+// 요소의 `class` 속성 값을 제어함.
+// - `.add()`: 새로운 값을 추가
+// - `.remove()`: 기존 값을 제거
+// - `.toggle()`: 값을 토글
+// - `.contains()`: 값을 확인
+
+let el = document.querySelector(".child");
+
+el.classList.add("active");
+console.log(el.classList.contains("active"));
+el.classList.remove("active");
+console.log(el.classList.contains("active"));
+
+el.addEventListener("click", () => {
+  el.classList.toggle("active");
+  console.log(el.classList.contains("active"));
+});
+
+
