@@ -102,3 +102,21 @@ console.log(styles.fontSize);
 console.log(styles.backgroundColor);
 console.log(styles.position);
 console.log(styles);
+
+// E.getAttribute() / E.setAttribute()
+// 요소에서 특정 속성 값을 얻거나 지정함.
+
+// 속성 (HTML: Attribute, CSS,JS: Property)
+
+let el = document.querySelector(".child");
+el.setAttribute("title", "Hello World!");
+console.log(el.getAttribute("title"));
+
+// E.hasAttribute() / E.removeAttribute()
+// 요소에서 특성 속성을 확인하거나 제거함.
+
+el = document.querySelector(".child");
+console.log(el.hasAttribute("class"));
+el.removeAttribute("class");
+console.log(el.hasAttribute("class"));
+console.log(el);
