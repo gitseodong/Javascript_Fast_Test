@@ -1,0 +1,20 @@
+// 이벤트 객체
+
+// 이벤트 객체는 대상에서 발생한 이벤트 정보를 담고 있다.
+// 이벤트 발생시 콜백함수의 첫 번째 매개변수로 event 객체가 입력됨.
+// event.target : 이벤트가 발생한 해당 요소
+// event.currentTarget : 이벤트가 등록된 요소
+
+const parentEl = document.querySelector(".parent");
+const inputEl = document.querySelector("input");
+
+parentEl.addEventListener("click", (event) => {
+  console.log(event);
+  console.log(event.target, event.currentTarget);
+});
+parentEl.addEventListener("wheel", (event) => {
+  console.log(event);
+});
+inputEl.addEventListener("keydown", (event) => {
+  console.log(event.key);
+});
