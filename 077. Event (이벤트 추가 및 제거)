@@ -1,0 +1,14 @@
+// .addEventListener()
+
+// 대상에 이벤트 청취(Listen)를 등록함.
+// 대상에 지정한 이벤트가 발생했을 때 지정한 함수(Handler)가 호출됨.
+
+let parentEl = document.querySelector(".parent");
+let childEl = document.querySelector(".child");
+
+parentEl.addEventListener("click", () => {
+  console.log("Parent!");
+});
+childEl.addEventListener("click", () => {
+  console.log("Child!");
+});
