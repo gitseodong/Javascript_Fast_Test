@@ -12,3 +12,20 @@ parentEl.addEventListener("click", () => {
 childEl.addEventListener("click", () => {
   console.log("Child!");
 });
+
+// .removeEventListener()
+
+// 대상에 등록했던 이벤트 청취(Listen)를 제거함.
+// 메모리 관리를 위해 등록한 이벤트를 제거하는 과정이 필요할 수 있음.
+
+let parentEl = document.querySelector(".parent");
+let childEl = document.querySelector(".child");
+
+const handler = () => {
+  console.log("Parent!");
+};
+
+parentEl.addEventListener("click", handler);
+childEl.addEventListener("click", () => {
+  parentEl.removeEventListener("click", handler);
+});
