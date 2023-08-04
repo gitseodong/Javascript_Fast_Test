@@ -64,4 +64,28 @@ el.addEventListener("click", () => {
   console.log(el.classList.contains("active"));
 });
 
+// E.style
+//요소의 `style` 속성(인라인 스타일)의 CSS 속성 값(객체 데이터)을 얻거나 저장함.
+// CSS 파일의 내용은 알 수 없다.
 
+let el = document.querySelector(".child");
+
+// 개별 지정!
+// el.style.width = "100px";
+// el.style.fontSize = "20px";
+// el.style.backgroundColor = "green";
+// el.style.position = "absolute";
+
+// 한 번에 지정
+Object.assign(el.style, {
+  width: "100px",
+  fontSize: "20px",
+  backgroundColor: "green",
+  position: "absolute",
+});
+
+console.log(el.style);
+console.log(el.style.width);
+console.log(el.style.fontSize);
+console.log(el.style.backgroundColor);
+console.log(el.style.position);
