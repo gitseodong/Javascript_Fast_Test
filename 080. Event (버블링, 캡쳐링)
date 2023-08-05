@@ -26,3 +26,73 @@ childEl.addEventListener("click", (event) => {
 anchorEl.addEventListener("click", (event) => {
   console.log("Anchor!");
 });
+
+
+// 캡쳐링
+// capture: true
+// 하위 요소로부터 상위 요소로 차례대로 버블링 되어 이벤트가 발생하나
+// capture: true 가 있는 경우 먼저 이벤트가 발생한다.
+// capture 옵션이 있는 것들 중에서는 상위 요소부터 하위 요소로 발생되고, 나머지 중에서 하위 요소부터 상위요소 방향으로 발생한다.
+let parentEl = document.querySelector(".parent");
+let childEl = document.querySelector(".child");
+let anchorEl = document.querySelector("a");
+
+window.addEventListener("click", (event) => {
+  console.log("window!");
+});
+document.body.addEventListener(
+  "click",
+  (event) => {
+    console.log("Body!");
+  },
+  { capture: true }
+);
+parentEl.addEventListener(
+  "click",
+  (event) => {
+    console.log("Parent!");
+  },
+  { capture: true }
+);
+childEl.addEventListener("click", (event) => {
+  console.log("Child!");
+});
+anchorEl.addEventListener("click", (event) => {
+  console.log("Anchor!");
+});
+
+// capture + stopPropagation()
+// 위에서 언급한 순서대로 이벤트가 진행하되, stopPropagation()을 만나면 그 다음 이벤트부터는 발생하지 않는다.
+
+let parentEl = document.querySelector(".parent");
+let childEl = document.querySelector(".child");
+let anchorEl = document.querySelector("a");
+
+window.addEventListener(
+  "click",
+  (event) => {
+    console.log("window!");
+  },
+  { capture: true }
+);
+document.body.addEventListener(
+  "click",
+  (event) => {
+    console.log("Body!");
+    event.stopPropagation();
+  },
+  { capture: true }
+);
+parentEl.addEventListener(
+  "click",
+  (event) => {
+    console.log("Parent!");
+  },
+  { capture: true }
+);
+childEl.addEventListener("click", (event) => {
+  console.log("Child!");
+});
+anchorEl.addEventListener("click", (event) => {
+  console.log("Anchor!");
+});
