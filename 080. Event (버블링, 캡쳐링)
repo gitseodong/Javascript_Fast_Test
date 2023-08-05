@@ -96,3 +96,24 @@ childEl.addEventListener("click", (event) => {
 anchorEl.addEventListener("click", (event) => {
   console.log("Anchor!");
 });
+
+// capture 옵션 사용시 그 다음의 removeEventListener는 작동하지 않음.
+
+let parentEl = document.querySelector(".parent");
+
+const handler = () => {
+  console.log("Parent!");
+};
+
+parentEl.addEventListener("click", handler, { capture: true });
+parentEl.removeEventListener("click", handler);
+// 이 코드에서 removeEventListener 는 작동하지 않음. 작동하게 하고 싶으면 removeEventListener에도 capture를 사용해줘야 함.
+
+let parentEl = document.querySelector(".parent");
+
+const handler = () => {
+  console.log("Parent!");
+};
+
+parentEl.addEventListener("click", handler, { capture: true });
+parentEl.removeEventListener("click", handler, { capture: true });
