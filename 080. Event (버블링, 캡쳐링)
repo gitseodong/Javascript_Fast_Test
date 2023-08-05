@@ -1,0 +1,28 @@
+// 이벤트 전파(버블) 정지
+// 자식 요소에 대한 이벤트는 모든 조상 요소의 이벤트를 같이 발생시킴.
+// event.stopPropagation()을 통해 상위 요소로의 버블링을 막는다.
+
+let parentEl = document.querySelector(".parent");
+let childEl = document.querySelector(".child");
+let anchorEl = document.querySelector("a");
+
+window.addEventListener("click", (event) => {
+  console.log("window!");
+});
+document.body.addEventListener("click", (event) => {
+  console.log("Body!");
+});
+parentEl.addEventListener("click", (event) => {
+  console.log("Parent!");
+  event.stopPropagation(); // 버블링 정지!!
+  // a태그를 클릭하면 Anchor, child, parent, body, window를 모두 출력함.
+  // stopPropagation()을 통해 버블링을 정지하면, parent까지만 출력됨.
+  // 상위 요소로의 버블링을 막음.
+});
+childEl.addEventListener("click", (event) => {
+  console.log("Child!");
+  event.stopPropagation();
+});
+anchorEl.addEventListener("click", (event) => {
+  console.log("Anchor!");
+});
