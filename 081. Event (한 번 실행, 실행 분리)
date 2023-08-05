@@ -1,0 +1,27 @@
+// 핸들러 한 번만 실행
+
+let parentEl = document.querySelector(".parent");
+
+parentEl.addEventListener(
+  "click",
+  () => {
+    console.log("Parent!");
+  },
+  { once: true }
+);
+
+// 기본 동작과 핸들러 실행 분리
+// wheel의 기본 동작은 스크롤바가 아래로 내려가는 것이다.
+// 핸들러 작동 후에 스크롤바가 내려간다.
+// 핸들러(이 코드에서는 for문)가 작동에 많은 부하가 있는 경우 핸들러가 모두 작동하는데 오랜 시간이 걸리고나서 스크롤바가 끊기면서 아래로 내려가므로
+// 핸들러 작동과 기본 동작(스크롤바가 아래로 내려가는 것)을 passive: true를 통해 분리시켜줄 수 있다.
+// 그러면 핸들러 작동이 오래 걸려도 스크롤바가 바로 아래로 부드럽게 내려간다.
+parentEl = document.querySelector(".parent");
+
+parentEl.addEventListener(
+  "wheel",
+  () => {
+    for (let i = 0; i < 10000; i++) console.log(i);
+  },
+  { passive: true }
+);
