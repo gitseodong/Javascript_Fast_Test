@@ -1,0 +1,43 @@
+// Mouse & Pointer Events
+
+// click       : 클릭했을 때
+// dblclick    : 더블 클릭했을 때
+// mousedown   : 버튼을 누를 때
+// mouseup     : 버튼을 뗄 때
+// mouseenter  : 포인터가 요소 위로 들어갈 때
+// mouseleave  : 포인터가 요소 밖으로 나올 때
+// mousemove   : 포인터가 움직일 때
+// contextmenu : 우클릭했을 때
+// wheel       : 휠 버튼이 회전할 때
+
+let parentEl = document.querySelector(".parent");
+let childEl = document.querySelector(".child");
+
+// childEl.addEventListener("click", () => {
+//   childEl.classList.toggle("click");
+// });
+// childEl.addEventListener("dblclick", () => {
+//   childEl.classList.toggle("dblclick");
+// });
+// childEl.addEventListener("mousedown", () => {
+//   childEl.classList.toggle("dblclick");
+// });
+// childEl.addEventListener("mouseup", () => {
+//   childEl.classList.toggle("dblclick");
+// });
+// childEl.addEventListener("mouseenter", () => {
+//   childEl.classList.toggle("dblclick");
+// });
+// childEl.addEventListener("mouseleave", () => {
+//   childEl.classList.toggle("dblclick");
+// });
+// childEl.addEventListener("mousemove", (event) => {
+//   console.log(event.offsetX, event.offsetY);
+// });
+// childEl.addEventListener("contextmenu", (event) => {
+//   event.preventDefault(); // 우클릭시 contextmenu가 나오지 않도록 함.
+//   console.log(event.offsetX, event.offsetY);
+// });
+// window.addEventListener("wheel", (event) => {
+//   console.log(event);
+// });
