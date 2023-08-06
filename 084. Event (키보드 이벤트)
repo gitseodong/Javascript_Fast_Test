@@ -1,0 +1,13 @@
+// Keyboard Events
+
+// keydown | 키를 누를 때
+// keyup   | 키를 땔 때
+
+let inputEl = document.querySelector("input");
+
+inputEl.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && !event.isComposing) { // && !event.isComposing 부분은 필요없음.
+    console.log(event.target.value);
+    event.target.value = "";
+  }
+});
