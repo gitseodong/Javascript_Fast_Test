@@ -1,0 +1,30 @@
+// Storage(스토리지)
+
+// 도메인 단위로 저장 (쿠키와 같음)
+// 5MB 제한
+// 세션 혹은 영구 저장 가능
+
+// sessionStorage : 브라우저 세션이 유지되는 동안에만 데이터 저장
+// localStorage : 따로 제거하지 않으면 영구적으로 데이터 저장
+
+// .getItem() : 데이터 조회
+// .setItem() : 데이터 추가
+// .removeItem() : 데이터 제거
+// .clear() : 스토리지 초기화
+
+// 항상 제이슨 형태로 저장.
+// 그래야 객체 데이터, 숫자 데이터 형태로 가져올 수 있다.
+
+localStorage.setItem("a", JSON.stringify("Hello world!"));
+localStorage.setItem("b", JSON.stringify({ x: 1, y: 2 }));
+localStorage.setItem("c", JSON.stringify(123));
+
+console.log(JSON.parse(localStorage.getItem("a")));
+console.log(JSON.parse(localStorage.getItem("b")));
+console.log(JSON.parse(localStorage.getItem("c")));
+
+// localStorage.removeItem("a");
+// localStorage.clear();
+
+// sessionStorage도 모두 똑같은 명령어를 쓸 수 있다.
+// localStorage -> sessionStorage
