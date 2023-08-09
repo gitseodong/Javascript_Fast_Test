@@ -65,3 +65,32 @@ console.log(1);
 console.log(2);
 console.log(3);
 console.clear();
+
+// 서식 문자 치환
+
+// %s - 문자로 적용
+// %o - 객체로 적용
+// %c - CSS를 적용
+
+const a = "The brown fox";
+const b = 3;
+const c = {
+  f: "fox",
+  d: "dog",
+};
+const d = [1, 2, 3, 4];
+
+console.log("%s jumps over the lazy dog %s times.", a, b);
+console.log("%o is Object!", c);
+console.log("%o is Array!", d);
+console.log(
+  "%cThe brown fox %cjumps over %cthe lazy dog.",
+  "color: brown; font-family: serif; font-size: 20px;",
+  "",
+  ",font-size: 18px; color: #FFF; background-color: green; border-radius: 4px;"
+);
+
+console.log(1);
+console.log(2);
+console.log(3);
+console.clear();
