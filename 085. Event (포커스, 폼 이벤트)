@@ -3,7 +3,7 @@
 // focus  : 요소가 포커스를 얻었을 때
 // blur   : 요소가 포커스를 잃었을 때
 // input  : 값이 변경되었을 때
-// change : 상태가 변경되었을 때, tab키나 enter키를 누를 때?
+// change : 상태가 변경되었을 때, tab키나 enter키를 누를 때
 // submit : type이 submit인 버튼을 선택했을 때
 // reset  : type이 reset인 버튼을 선택했을 때
 
