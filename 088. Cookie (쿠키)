@@ -1,0 +1,31 @@
+// Cookie(쿠키)
+
+// 도메인(사이트) 단위로 저장
+// 표준안 기준, 사이트당 최대 20개 및 4KB로 제한
+// 영구 저장 불가능
+
+// domain: 유효 도메인 설정, 도메인이 입력되었는데 해당 도메인과 다르면 데이터가 저장되지 않음.
+// path: 유효 경로 설정, 해당 경로의 하위경로에서만 데이터가 저장됨.
+// expires: 만료 날짜(UTC Date) 설정, toUTCString() 메소드 사용, 한국 기준 9시간을 빼줌.
+// max-age: 만료 타이머(s) 설정
+// 만료 날짜 또는 만료 시간을 설정해주지 않으면 만료시간이 session이 되고, 브라우저가 종료되면 쿠키정보도 종료됨.
+
+// 데이터 용량 제한이 심하고, 데이터를 찾아오는 코드가 복잡하다.
+
+document.cookie = "a=1; domain=localhost; path=/";
+document.cookie = "b=2";
+// 할당 연산자를 사용해도 값이 지워지지 않고 누적됨.
+document.cookie = "c=3; domain=google.com";
+document.cookie = `d=4; max-age=${60 * 60 * 24 * 3}`; // 만료시간 3일
+document.cookie = `e=5; expires=${new Date(2023, 7, 16).toUTCString()}`; // 만료날짜는 2023년 8월 16일
+document.cookie = "e=3"; // 덮어쓰기할 수 있음.
+console.log(document.cookie);
+
+function getCookie(name) {
+  const cookie = document.cookie
+    .split("; ")
+    .find((cookie) => cookie.split("=")[0] === name);
+  return cookie ? cookie.split("=")[1] : null;
+}
+
+console.log(getCookie("a"));
