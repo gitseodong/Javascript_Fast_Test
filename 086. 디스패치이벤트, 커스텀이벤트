@@ -20,3 +20,16 @@ child2.addEventListener("wheel", (event) => {
 child2.addEventListener("keydown", (event) => {
   console.log("Child2 Keydown!");
 });
+
+// 커스컴 이벤트, diapatchEvent 를 통해 'hello-world'와 같이 원래 없는 이벤트를 만들어서 발생시킬 수 있음.
+const child1 = document.querySelector(".child:nth-child(1)");
+const child2 = document.querySelector(".child:nth-child(2)");
+
+child1.addEventListener("hello-world", (event) => {
+  console.log("커스텀 이벤트 발생");
+  console.log(event.detail);
+});
+
+child2.addEventListener("click", (event) => {
+  child1.dispatchEvent(new Event("hello-world"));
+});
