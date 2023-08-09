@@ -23,7 +23,7 @@ inputEls.forEach((el) => {
 });
 
 formEl.addEventListener('submit', (event) => {
-  event.preventDefault(); // submit의 기본 동작은 초기화인데, 초기화를 하지 않도록 함.
+  event.preventDefault(); // submit의 기본 동작은 화면 초기화인데, 초기화를 하지 않도록 함.
   const data = {
     id: event.target[0].value,
     pw: event.target[1].value,
