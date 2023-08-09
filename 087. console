@@ -1,0 +1,58 @@
+// console
+// .log(), .warn(), .error(), .dir()
+
+// 콘솔에 메시지나 객체를 출력함.
+
+// - log : 일반 메시지
+// - warn : 경고 메시지
+// - error : 에러 메시지
+// - dir : 속성을 볼 수 있는 객체를 출력
+
+console.log(document.body);
+console.warn(document.body);
+console.error(document.body);
+console.dir(document.body);
+
+// .count(), .countReset()
+
+// 콘솔에 메소드 호출의 누적 횟수를 출력하거나 초기화함.
+// console.count('이름')
+// console.countReset('이름')
+
+console.count();
+console.count("a");
+console.count("b");
+console.count("a");
+console.log("Reset a!");
+console.countReset("a");
+console.count("a");
+console.count("b");
+
+// .time(), .timeEnd()
+// console.time('타이머이름')
+// console.timeEnd('타이머이름')
+
+console.time("반복문");
+
+let sum = 0;
+for (let i = 0; i < 10000; i++) {
+  sum += i;
+}
+console.log("sum:", sum);
+console.timeEnd("반복문");
+
+// .trace()
+
+// 메소드 호출 스택(Call Stack)을 추적해 출력함.
+
+function a() {
+  function b() {
+    function c() {
+      console.log("Log!");
+      console.trace("Trace!");
+    }
+    c();
+  }
+  b();
+}
+a();
