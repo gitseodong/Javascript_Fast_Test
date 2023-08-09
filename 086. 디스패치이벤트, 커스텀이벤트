@@ -33,3 +33,23 @@ child1.addEventListener("hello-world", (event) => {
 child2.addEventListener("click", (event) => {
   child1.dispatchEvent(new Event("hello-world"));
 });
+// 위와 같이 할 경우 발생한 event의 객체 데이터는 존재하나, 그 객체 데이터의 detail은 undefined상태이다.
+// 커스텀 이벤트의 detail에 내용을 추가하고 싶다면 다음과 같이 new CustomEvent로 바꾸고, 2번째 인수로 detail 속성이 있는 객체 데이터를 넣으면 된다.
+const child1 = document.querySelector(".child:nth-child(1)");
+const child2 = document.querySelector(".child:nth-child(2)");
+
+child1.addEventListener("hello-world", (event) => {
+  console.log("커스텀 이벤트 발생");
+  console.log(event.detail);
+});
+child1.addEventListener("wheel", (event) => {
+  console.log(event);
+});
+
+child2.addEventListener("click", () => {
+  child1.dispatchEvent(
+    new CustomEvent("hello-world", {
+      detail: 123,
+    })
+  );
+});
