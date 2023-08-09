@@ -26,8 +26,8 @@ const child1 = document.querySelector(".child:nth-child(1)");
 const child2 = document.querySelector(".child:nth-child(2)");
 
 child1.addEventListener("hello-world", (event) => {
-  console.log("커스텀 이벤트 발생");
-  console.log(event.detail);
+  console.log("커스텀 이벤트 발생"); // 커스컴 이벤트 발생
+  console.log(event.detail); // undefined
 });
 
 child2.addEventListener("click", (event) => {
