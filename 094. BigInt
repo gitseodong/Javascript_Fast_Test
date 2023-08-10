@@ -42,5 +42,5 @@ for (let i = 0; i < 100000000; i++) {
 const time3 = new Date().getTime();
 console.log("n1 = ", n1);
 console.log("b1 = ", b1);
-console.log("n 시간:", time2 - time1, "ms");
-console.log("b 시간:", time3 - time2, "ms");
+console.log("n 시간:", time2 - time1, "ms"); // n 시간: 117 ms
+console.log("b 시간:", time3 - time2, "ms"); // b 시간: 506 ms
