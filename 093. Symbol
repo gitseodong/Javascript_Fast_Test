@@ -24,3 +24,32 @@ console.log(typeof sKey); // symbol
 // 따라서 세 번째 출력값과 네 번째 출력값이 같을 것 같지만, 네 번째 출력값은 undefined를 출력함.
 
 // '민감한 정보' 값은 이미 만들어져 있는 sKey 변수를 통해서만 얻을 수 있고, 그 외의 방법으로는 불가능하다.
+
+// 아래는 Symbol을 사용하는 예시
+
+< main.js >
+import sc from "./seongchang";
+
+console.log(sc); // {name: '조성창', age: 41, address: '서울시', Symbol(생일): Thu Feb 24 1983 17:30:00 GMT+0900 (한국 표준시), Symbol(이메일들): Array(2)}
+console.log(Object.keys(sc)); // name, age, address 만 출력됨.
+console.log(Object.values(sc)); // 조성창, 41, 서울시 만 출력됨.
+
+for (let key in sc) {
+  console.log(sc[key]); // 조성창 // 41 // 서울시
+}
+
+< seongchang.js >
+import { birthKey, emailsKey } from "./keys";
+
+export default a = {
+  name: "조성창",
+  age: 41,
+  address: "서울시",
+  [birthKey]: new Date(1983, 1, 24, 17, 30),
+  [emailsKey]: ["seodong56@nate.com", "belief56@gmail.com"],
+};
+
+< keys.js >
+export const birthKey = Symbol("생일");
+export const emailsKey = Symbol("이메일들");
+
