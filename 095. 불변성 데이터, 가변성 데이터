@@ -1,0 +1,39 @@
+// 불변성 & 가변성
+
+// 불변성(Immutability)은 생성된 데이터가 메모리에서 변경되지 않고,
+// 가변성(Mutability)은 생성된 데이터가 메모리에서 변경될 수 있음을 의미함.
+
+// 자바스크립트 원시형은 불변성을, 참조형은 가변성을 가지고 있음.
+// 원시형 : Number, Boolean, String, null, undefined, Symbol, BigInt
+// 참조형 : 객체데이터, 배열데이터, 함수데이터 딱3개만 있음.
+
+let a = 1;
+let b = a; // b에 a를 할당함.
+
+b = 2;
+
+console.log(b); // 2
+console.log(a); // 1, b가 바뀐다고 a까지 바뀌는 것은 아님(원시형)
+
+a = { x: 1 };
+b = a; // b에 a를 할당함.
+
+b.x = 2;
+
+console.log(b); // { x: 2 }
+console.log(a); // { x: 2 }, b가 바뀌면 a까지 바뀜(참조형)
+
+a = { x: 1 };
+b = a;
+
+b["y"] = 2;
+
+console.log(b); // {x: 1, y: 2}
+console.log(a); // {x: 1, y: 2}, 참조하는 객체 자체가 바뀌지 않는 이상 a와 b는 서로 같음
+
+a = { x: 1 };
+b = a;
+
+b = { k: 10 };
+console.log(b); // { k: 10 }
+console.log(a); // { x: 1 }, b가 참조하는 객체 자체가 바뀌면 a와 b는 서로 달라짐.
