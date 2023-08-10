@@ -22,3 +22,25 @@ console.log(typeof (a + BigInt(b))); // bigint
 // BigInt => 숫자
 console.log(Number(a) + b); // 33
 console.log(typeof (Number(a) + b)); // number
+
+
+// 아래는 BigInt의 계산시간 체크하는 코드, 내가 만듦
+
+let n1 = 1000000000000000;
+let b1 = 1000000000000000n;
+
+const time1 = new Date().getTime();
+
+for (let i = 0; i < 100000000; i++) {
+  n1 += 1;
+}
+const time2 = new Date().getTime();
+
+for (let i = 0; i < 100000000; i++) {
+  b1 += 1n;
+}
+const time3 = new Date().getTime();
+console.log("n1 = ", n1);
+console.log("b1 = ", b1);
+console.log("n 시간:", time2 - time1, "ms");
+console.log("b 시간:", time3 - time2, "ms");
