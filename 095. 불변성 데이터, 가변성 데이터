@@ -38,3 +38,6 @@ b = a;
 b = { k: 10 };
 console.log(b); // { k: 10 }
 console.log(a); // { x: 1 }, b가 참조하는 객체 자체가 바뀌면 a와 b는 서로 달라짐.
+
+console.log(1 === 1); // true
+console.log({} === {}); // false
