@@ -29,6 +29,7 @@ console.log(typeof sKey); // symbol
 
 < main.js >
 import sc from "./seongchang";
+import { birthKey, emailsKey } from "./keys";
 
 console.log(sc); // {name: '조성창', age: 41, address: '서울시', Symbol(생일): Thu Feb 24 1983 17:30:00 GMT+0900 (한국 표준시), Symbol(이메일들): Array(2)}
 console.log(Object.keys(sc)); // name, age, address 만 출력됨.
@@ -37,6 +38,9 @@ console.log(Object.values(sc)); // 조성창, 41, 서울시 만 출력됨.
 for (let key in sc) {
   console.log(sc[key]); // 조성창 // 41 // 서울시
 }
+
+console.log(sc[birthKey]); // Thu Feb 24 1983 17:30:00 GMT+0900 (한국 표준시)
+console.log(sc[emailsKey]); // ['seodong56@nate.com', 'belief56@gmail.com']
 
 < seongchang.js >
 import { birthKey, emailsKey } from "./keys";
