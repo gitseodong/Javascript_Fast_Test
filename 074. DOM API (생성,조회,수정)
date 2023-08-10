@@ -85,3 +85,16 @@ console.log(el.textContent);
 
 el = document.querySelector(".parent");
 console.log(el.innerHTML);
+
+// E.insertAdjacentHTML()
+// innerHTML과 같이 코드 자체를 요소로 삽입.
+// beforebegin, afterbegin, beforeend, afterend 는 E.insertAdjacentElement()와 같음.
+
+const a = /* html */ `
+  <div class="child"></div>  
+  `;
+
+const appEl = document.getElementById("app");
+
+// appEl.innerHTML = a + appEl.innerHTML;
+appEl.insertAdjacentHTML("afterend", a);
