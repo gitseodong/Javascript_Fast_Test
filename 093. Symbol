@@ -1,0 +1,26 @@
+// 심볼(Symbol)
+
+// 변경이 불가능한 데이터로, 유일한 식별자를 만들어 데이터를 보호하는 용도로 사용함.
+// 심볼은 주로 객체의 프로퍼티 키(key)로 사용됨.
+// 심볼 프로퍼티를 사용하면, 일반적으로 사용디는 문자열 키와 구분되어 유일한 값을 가지기 때문에
+// 다른 라이브러리나 프레임워크 등과 충돌하는 것을 방지함.
+
+// Symbol('설명')
+// '설명'은 단순 디버깅을 위한 용도일 뿐, 심볼 값과는 관계가 없다.
+
+const sKey = Symbol("Hello!");
+const user = {
+  key: "일반 정보!",
+  [sKey]: "민감한 정보!",
+};
+
+console.log(user.key); // 일반 정보!
+console.log(user["key"]); // 일반 정보!
+console.log(user[sKey]); // 민감한 정보!
+console.log(user[Symbol("Hello!")]); // undefined
+console.log(sKey); // Symbol(Hello!)
+console.log(typeof sKey); // symbol
+//Symbol("Hello")가 담긴 sKey 와 새로 작성한 Symbol("Hello")은 서로 다른 값
+// 따라서 세 번째 출력값과 네 번째 출력값이 같을 것 같지만, 네 번째 출력값은 undefined를 출력함.
+
+// '민감한 정보' 값은 이미 만들어져 있는 sKey 변수를 통해서만 얻을 수 있고, 그 외의 방법으로는 불가능하다.
