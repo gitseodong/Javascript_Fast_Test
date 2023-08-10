@@ -99,6 +99,7 @@ render();
 
 const pagePush = (num) => {
   history.pushState(`전달할 데이터 - ${num}`, null, `#/page${num}`);
+// history.pushState()는 window의 popstate 이벤트를 발생시키지 못한다. 따라서 바로 아래와 같이 render()를 추가로 실행해준다.
   render();
 };
 
