@@ -1,0 +1,22 @@
+// BigInt
+
+// BigInt는 길이 제한이 엇는 정수(integer)이다.
+// 숫자(number) 데이터가 안정적으로 표시할 수 있는,
+// 최대치(`2^53 - 1`)보다 큰 정수를 표현할 수 있음
+// 정수 뒤에 `n`을 붙이거나 `BigInt()`를 호출해 생성한다.
+
+console.log(1234567890123456789012345678901234567890); // 1.2345678901234568e+39
+
+console.log(1234567890123456789012345678901234567890n); // 1234567890123456789012345678901234567890n
+console.log(BigInt(1234567890123456789012345678901234567890n)); // 1234567890123456789012345678901234567890n
+
+const a = 11n;
+const b = 22;
+
+// 숫자 => BigInt
+console.log(a + BigInt(b)); // 33n
+console.log(typeof (a + BigInt(b))); // bigint
+
+// BigInt => 숫자
+console.log(Number(a) + b); // 33
+console.log(typeof (Number(a) + b)); // number
