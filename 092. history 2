@@ -96,7 +96,7 @@ window.addEventListener("popstate", render);
 render();
 
 const pagePush = (num) => {
-  history.pushState(`너달할 데이터 - ${num}`, null, `#/page${num}`);
+  history.pushState(`전달할 데이터 - ${num}`, null, `#/page${num}`);
   render();
 };
 
