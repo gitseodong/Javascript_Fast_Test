@@ -27,5 +27,29 @@ btn.addEventListener("click", () => {
   parent?.remove(); // 또는 parent && parent.remove() 를 써준다. parent가 null이면 parent를 반환하고, parent가 null이 아니면 parent.remove()를 실행한다.
 });
 
-// - 해제하지 않은 타이머
-// - 잘못된 클로저 사용
+// (3) 해제하지 않은 타이머
+
+let a = 0;
+setInterval(() => {
+  a++;
+}, 100);
+
+setTimeout(() => {
+  console.log(a);
+}, 1000);
+// 이 경우 setInterval이 0.1초마다 계속 실행됨.
+// 다음과 같이 clearInterval을 통해 setInterval 작동을 멈춰줄 수 있다.
+
+let a = 0;
+const interval = setInterval(() => {
+  a++;
+}, 100);
+
+setTimeout(() => {
+  console.log(a);
+  clearInterval(interval);
+}, 1000);
+
+
+// (4) 잘못된 클로저 사용
+
