@@ -88,12 +88,13 @@ h2El.addEventListener("click", (event) => {
 const h1El = document.querySelector("h1");
 const h2El = document.querySelector("h2");
 
-const createToggleHandler = () => {
+const redBlackToggler = function () {
   let isRed = false;
   return (event) => {
     isRed = !isRed;
     event.target.style.color = isRed ? "red" : "black";
   };
 };
-h1El.addEventListener("click", createToggleHandler());
-h2El.addEventListener("click", createToggleHandler());
+
+h1El.addEventListener("click", redBlackToggler());
+h2El.addEventListener("click", redBlackToggler());
