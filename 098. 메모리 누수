@@ -22,7 +22,7 @@ btn.addEventListener("click", () => {
 const btn = document.querySelector("button");
 
 btn.addEventListener("click", () => {
-  const parent = document.querySelector(".parent");
+  const parent = document.querySelector(".parent"); // querySelector에서 요소를 찾지 못하면 null이 반환됨.
   console.log(parent);
   parent?.remove(); // 또는 parent && parent.remove() 를 써준다. parent가 null이면 parent를 반환하고, parent가 null이 아니면 parent.remove()를 실행한다.
 });
