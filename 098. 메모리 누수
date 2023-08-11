@@ -4,9 +4,6 @@
 
 // (1) 불필요한 전역 변수 사용
 
-// - 해제하지 않은 타이머
-// - 잘못된 클로저 사용
-
 window.hello = "Hello world!";
 window.heropy = { name: "Heropy", age: 85 };
 // window라는 전역객체에 등록된 데이터는 사용되지 않더라도 사용되는 것으로 인식.
@@ -21,10 +18,14 @@ btn.addEventListener("click", () => {
 });
 // parent.remove() 를 통해 요소를 제거했어도 parent 변수에는 그 주소가 남아있다.
 // 다음과 같이 parent 변수를 EventListener 내부로 옮겨줌으로써 parent 변수도 사라지게 할 수 있다.
+// parent가 삭제된 뒤에 버튼 클릭시 parent에는 null이 할당되고, parent.remove()에서 오류가 나게 되므로 ? 를 붙여준다.
 const btn = document.querySelector("button");
 
 btn.addEventListener("click", () => {
   const parent = document.querySelector(".parent");
   console.log(parent);
-  parent.remove();
+  parent?.remove(); // 또는 parent && parent.remove() 를 써준다. parent가 null이면 parent를 반환하고, parent가 null이 아니면 parent.remove()를 실행한다.
 });
+
+// - 해제하지 않은 타이머
+// - 잘못된 클로저 사용
