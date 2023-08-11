@@ -1,0 +1,63 @@
+import cloneDeep from "lodash/cloneDeep";
+
+// 얕은 복사 & 깊은 복사
+
+// 참조형은 가변성으로 인해, 데이터를 복사할 때 주의가 필요하다.
+
+// 얕은 복사(Shallow Copy) - 참조형의 1차원 데이터만 복사
+// 깊은 복사(Deep Copy) - 참조형의 모든 차원 데이터를 복사, lodash 패키지의 cloneDeep
+
+let a = { x: 1 };
+let b = a; // b에 a를 할당함으로써, b를 수정하는 것이 곧 a를 수정하는 것과 같게 된다.
+
+b.x = 2;
+
+console.log(b); // { x: 2 }
+console.log(a); // { x: 2 }
+
+a = { x: 1 };
+b = Object.assign({}, a); // b에 a를 직접 할당하는 것이 아니라, a를 복사해서 할당한다. (얕은 복사)
+
+b.x = 2;
+
+console.log(b); // { x: 2 }
+console.log(a); // { x: 1 }
+
+b = { ...a }; // Object.assign과 전개연산자 사용은 모두 얕은복사이다.
+
+b.x = 3;
+
+console.log(b); // { x: 3 }
+console.log(a); // { x: 1 }
+
+a = { x: { y: 1 } };
+b = { ...a }; // 얕은 복사
+
+b.x.y = 2;
+
+console.log(b); // { x: { y: 2 } }
+console.log(a); // { x: { y: 2 } }
+
+a = { x: { y: 1 } };
+b = cloneDeep(a); // 깊은 복사
+
+b.x.y = 2;
+
+console.log(b); // { x: { y: 2 } }
+console.log(a); // { x: { y: 1 } }
+
+// 배열의 얕은 복사
+
+a = [1, 2, [3, 4]];
+b = [...a];
+b[2].push(5);
+console.log(b); // [1, 2, [3, 4, 5] ]
+console.log(a); // [1, 2, [3, 4, 5] ]
+
+// 배열의 깊은 복사
+
+a = [1, 2, [3, 4]];
+b = cloneDeep(a);
+b[2].push(5);
+console.log(b); // [1, 2, [3, 4, 5] ]
+console.log(a); // [1, 2, [3, 4] ]
