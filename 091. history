@@ -20,3 +20,4 @@ history.go(-2) // 한 번에 뒤로 2번 이동.
 //    - 제목 부분에 빈문자열을 추가함. 그래야 3번째에 주소를 넣을 수 있음.
 
 console.log(history);
+history.replaceState(null, '', '/#/');
