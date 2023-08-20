@@ -1,6 +1,7 @@
 // super()의 쓰임
 // 1) 부모클래스의 생성자함수 호출
 // 2) 부모클래스의 메소드 호출, 이 경우 super대신 this를 써도 되는 듯.
+// 생성자 함수 안에서 super를 호출한 다음에 this키워드 사용가능.
 
 class Car {
   constructor(brand) {
