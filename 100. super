@@ -1,0 +1,25 @@
+// super()의 쓰임
+// 1) 부모클래스의 생성자함수 호출
+// 2) 부모클래스의 메소드 호출, 이 경우 super대신 this를 써도 되는 듯.
+
+class Car {
+  constructor(brand) {
+    this.brand = brand;
+  }
+  present() {
+    return this.brand + '를 갖고 있습니다.';
+  }
+}
+
+class Model extends Car {
+  constructor(brand, model) {
+    super(brand);
+    this.model = model;
+  }
+  show() {
+    return '나는 ' + this.model + ' 모델의 ' + super.present();
+  }
+}
+
+const A6 = new Model('Audi', 'A6');
+console.log(A6.show());
