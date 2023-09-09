@@ -1,6 +1,6 @@
 // Location
 
-// 현재 페이지 정보를 반환(get)하거나 제어(set)함.
+// 현재 페이지 정보를 반환(getter)하거나 제어(setter)함.
 // 오직 웹브라우저에 표시된 현재 페이지의 정보만을 알 수 있음.
 
 // .href: 전체 URL 주소 (hypertext reference) : "http://localhost:1234/abc?a=1#hello"
